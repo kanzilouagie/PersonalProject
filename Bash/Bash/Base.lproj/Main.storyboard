@@ -16,12 +16,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Lwh-tE-LVR">
-                                <rect key="frame" x="40" y="702" width="334" height="120"/>
+                                <rect key="frame" x="40" y="632" width="334" height="190"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mp4-2I-ziS">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="3a6-Zc-kn2"/>
+                                            <constraint firstAttribute="height" constant="50" id="CbR-WQ-kBj"/>
                                         </constraints>
                                         <state key="normal" title="Sign Up"/>
                                         <connections>
@@ -35,9 +35,17 @@
                                             <segue destination="XmO-VL-Zz2" kind="show" id="kdN-8o-F9u"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8RV-Y6-aZP">
+                                        <rect key="frame" x="0.0" y="140" width="334" height="50"/>
+                                        <state key="normal" title="Facebook"/>
+                                        <connections>
+                                            <action selector="facebookLoginTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DuP-I1-UqY"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="5jy-wG-49o" firstAttribute="height" secondItem="Mp4-2I-ziS" secondAttribute="height" id="7Eb-7V-Zkh"/>
+                                    <constraint firstItem="8RV-Y6-aZP" firstAttribute="height" secondItem="Mp4-2I-ziS" secondAttribute="height" id="rCN-ut-YqO"/>
+                                    <constraint firstItem="5jy-wG-49o" firstAttribute="height" secondItem="Mp4-2I-ziS" secondAttribute="height" id="u2d-QA-zvz"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -51,6 +59,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Glz-0q-BaS"/>
                     <connections>
+                        <outlet property="facebookLoginButton" destination="8RV-Y6-aZP" id="03g-f8-Zwe"/>
                         <outlet property="loginButton" destination="5jy-wG-49o" id="ItT-BT-6HH"/>
                         <outlet property="signUpButton" destination="Mp4-2I-ziS" id="M3w-Sh-jQy"/>
                     </connections>
