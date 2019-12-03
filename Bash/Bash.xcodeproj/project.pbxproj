@@ -16,8 +16,6 @@
 		E53D81D0239554E000D83DB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E53D81CF239554E000D83DB5 /* Assets.xcassets */; };
 		E53D81D3239554E000D83DB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E53D81D1239554E000D83DB5 /* LaunchScreen.storyboard */; };
 		E53D81DB239555B800D83DB5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E53D81DA239555B800D83DB5 /* GoogleService-Info.plist */; };
-		E53D81DD2395581F00D83DB5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53D81DC2395581F00D83DB5 /* SignUpViewController.swift */; };
-		E53D81DF2395583700D83DB5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53D81DE2395583700D83DB5 /* LoginViewController.swift */; };
 		E53D81E12395584D00D83DB5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53D81E02395584D00D83DB5 /* HomeViewController.swift */; };
 		E53D81E4239562DD00D83DB5 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53D81E3239562DD00D83DB5 /* Utilities.swift */; };
 		E53D81E72395706200D83DB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53D81E62395706200D83DB5 /* Constants.swift */; };
@@ -37,11 +35,10 @@
 		E53D81D2239554E000D83DB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E53D81D4239554E000D83DB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E53D81DA239555B800D83DB5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		E53D81DC2395581F00D83DB5 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		E53D81DE2395583700D83DB5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E53D81E02395584D00D83DB5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E53D81E3239562DD00D83DB5 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		E53D81E62395706200D83DB5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E5EE8EEE239595D000B55DA5 /* Bash.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bash.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +91,7 @@
 		E53D81C2239554DF00D83DB5 /* Bash */ = {
 			isa = PBXGroup;
 			children = (
+				E5EE8EEE239595D000B55DA5 /* Bash.entitlements */,
 				E53D81C3239554DF00D83DB5 /* AppDelegate.swift */,
 				E53D81C5239554DF00D83DB5 /* SceneDelegate.swift */,
 				E53D81E5239562EC00D83DB5 /* Helpers */,
@@ -111,8 +109,6 @@
 		E53D81E22395586600D83DB5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E53D81DC2395581F00D83DB5 /* SignUpViewController.swift */,
-				E53D81DE2395583700D83DB5 /* LoginViewController.swift */,
 				E53D81E02395584D00D83DB5 /* HomeViewController.swift */,
 				E53D81C7239554DF00D83DB5 /* ViewController.swift */,
 			);
@@ -147,6 +143,8 @@
 			dependencies = (
 			);
 			name = Bash;
+			packageProductDependencies = (
+			);
 			productName = Bash;
 			productReference = E53D81C0239554DF00D83DB5 /* Bash.app */;
 			productType = "com.apple.product-type.application";
@@ -175,6 +173,8 @@
 				Base,
 			);
 			mainGroup = E53D81B7239554DF00D83DB5;
+			packageReferences = (
+			);
 			productRefGroup = E53D81C1239554DF00D83DB5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -310,14 +310,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E53D81DF2395583700D83DB5 /* LoginViewController.swift in Sources */,
 				E53D81C8239554DF00D83DB5 /* ViewController.swift in Sources */,
 				E53D81C4239554DF00D83DB5 /* AppDelegate.swift in Sources */,
 				E53D81C6239554DF00D83DB5 /* SceneDelegate.swift in Sources */,
 				E53D81CE239554DF00D83DB5 /* Bash.xcdatamodeld in Sources */,
 				E53D81E12395584D00D83DB5 /* HomeViewController.swift in Sources */,
 				E53D81E4239562DD00D83DB5 /* Utilities.swift in Sources */,
-				E53D81DD2395581F00D83DB5 /* SignUpViewController.swift in Sources */,
 				E53D81E72395706200D83DB5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,6 +461,7 @@
 			baseConfigurationReference = 6522EDB109D36925CF4010B3 /* Pods-Bash.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Bash/Bash.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 52D4632D5X;
 				INFOPLIST_FILE = Bash/Info.plist;
@@ -482,6 +481,7 @@
 			baseConfigurationReference = A5ACC1AF6AB4663C7AD5FF5B /* Pods-Bash.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Bash/Bash.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 52D4632D5X;
 				INFOPLIST_FILE = Bash/Info.plist;
