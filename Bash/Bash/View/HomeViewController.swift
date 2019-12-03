@@ -7,24 +7,32 @@
 //
 
 import UIKit
+import FirebaseUI
 
 class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        getUserInfo()
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func getUserInfo() {
+        if Auth.auth().currentUser != nil {
+          let user = Auth.auth().currentUser
+          if let user = user {
+            let uid = user.uid
+            let email = user.email
+            let photoURL = user.photoURL
+            print(uid)
+            print(email!)
+            print(photoURL!)
+        } else {
+          print("no user signed in")
+        }
+        
+        }
     }
-    */
+    
 
 }

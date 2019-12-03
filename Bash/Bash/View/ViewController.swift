@@ -13,31 +13,45 @@ import FirebaseUI
 
 class ViewController: UIViewController {
     
+    // save a ref to the handler
+    private var authListener: AuthStateDidChangeListenerHandle?
     
-    @IBOutlet weak var signUpButton: UIButton!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var facebookLoginButton: UIButton!
+    // Check for auth status some where
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+            
+
+        authListener = Auth.auth().addStateDidChangeListener { (auth, user) in
+
+            if user != nil {
+                self.transitionToHome()
+            
+            } else {
+                self.presentLogin()
+            }
+        }
+    }
+
+    // Remove the listener once it's no longer needed
+    deinit {
+        if authListener != nil {
+            Auth.auth().removeStateDidChangeListener(authListener!)
+        }
+    }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-//        let ref = Database.database().reference()
-//        ref.childByAutoId().setValue(["name":"Kevin","age":13,"role":"Admin"])
-        setUpElements();
     }
     
-    func setUpElements() {
-        Utilities.styleFilledButton(signUpButton)
-        Utilities.styleHollowButton(loginButton)
-    }
-    
-    
-    @IBAction func facebookLoginTapped(_ sender: Any) {
+    func presentLogin() {
         let authUI = FUIAuth.defaultAuthUI()
         let providers: [FUIAuthProvider] = [
-          FUIFacebookAuth()
+          FUIFacebookAuth(),
+          FUIEmailAuth()
+          
         ]
         authUI!.providers = providers
         
@@ -47,8 +61,7 @@ class ViewController: UIViewController {
         authUI?.delegate = self
         let authViewController = authUI!.authViewController()
         
-        present(authViewController, animated: true, completion: nil)
-        
+        present(authViewController, animated: false, completion: nil)
     }
     
     func transitionToHome() {
@@ -63,12 +76,14 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: FUIAuthDelegate {
+    
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         if error != nil {
             return 
         }
         
-//        authDataResult?.user.uid
+        //data halen van de ingelogde user.
+        print("facebook profiel foto: ", authDataResult?.user.photoURL ?? "String")
         self.transitionToHome()
     }
 }

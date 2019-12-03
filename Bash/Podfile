@@ -6,6 +6,7 @@ target 'Bash' do
   use_frameworks!
 
   # Pods for Bash
+pod 'Firebase'
 pod 'FirebaseCore', '~> 6.4'
 pod 'FirebaseDatabase', '~> 6.1'
 pod 'Firebase/Analytics'
