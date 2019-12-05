@@ -353,6 +353,18 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
+  - PromiseKit (6.12.0):
+    - PromiseKit/CorePromise (= 6.12.0)
+    - PromiseKit/Foundation (= 6.12.0)
+    - PromiseKit/UIKit (= 6.12.0)
+  - PromiseKit/Alamofire (6.12.0):
+    - Alamofire (~> 4.0)
+    - PromiseKit/CorePromise
+  - PromiseKit/CorePromise (6.12.0)
+  - PromiseKit/Foundation (6.12.0):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.12.0):
+    - PromiseKit/CorePromise
   - SDWebImage (5.3.2):
     - SDWebImage/Core (= 5.3.2)
   - SDWebImage/Core (5.3.2)
@@ -366,6 +378,8 @@ DEPENDENCIES:
   - FirebaseCore (~> 6.4)
   - FirebaseDatabase (~> 6.1)
   - FirebaseUI
+  - PromiseKit
+  - PromiseKit/Alamofire
   - SwiftyJSON
 
 SPEC REPOS:
@@ -400,6 +414,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
+    - PromiseKit
     - SDWebImage
     - SwiftyJSON
 
@@ -434,9 +449,10 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 43b8b64263023d4f32caa0b40f4c8bfa3c5f36d8
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  PromiseKit: c06835ba442ce5454ce3cdde470232804a6e4ff8
   SDWebImage: 6ac2eb96571bff96ecde31a987172c5934a0eb7d
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 039f60a251ef911f89e341c558dbb64d080073c4
+PODFILE CHECKSUM: f442078c4898201c64382377e9b916ac35072f58
 
 COCOAPODS: 1.6.1

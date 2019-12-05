@@ -15,7 +15,7 @@ struct EventData {
     var eventsData: [RequestedData] = []
 //
 //    func fetchuserData() {
-//        DispatchQueue.main.async { Alamofire.request("https://graph.facebook.com/cafetkanon/events?access_token=EAAikZAhKooxgBAPT4MvuW64cJ8rwlkqdI1ewatDXwYEBUATA4zmh1x6yNEXhZAtKjOgUfVrefD0WYFlb0QsUHlz4aqRZAkC4LZByXLXRYkhCScZBLdZApe8HnzOrmzMuje9dejVIzSBY3OZBkWzlRFBT9JzKntjCHLki5xxPXwNsQZDZD&fields=description,end_time,name,place,start_time,id,interested_count,cover").responseJSON { (response) in
+//        DispatchQueue.main.async { Alamofire.request("https://graph.facebook.com/cafetkanon/events?access_token=EAAikZAhKooxgBAPT4MvuW64cJ8rwlkqdI1ewatDXwYEBUATA4zmh1x6yNEXhZAtKjOgUfVrefD0WYFlb0QsUHlz4aqRZAkC4LZByXLXRYkhCScZBLdZApe8HnzOrmzMuje9dejVIzSBY3OZBkWzlRFBT9JzKntjCHLki5xxPXwNsQZDZD&fields=description,end_time,name,place,start_time,id,interested_count, cover").responseJSON { (response) in
 //            switch response.result {
 //            case .success(let value):
 //                let json = JSON(value)

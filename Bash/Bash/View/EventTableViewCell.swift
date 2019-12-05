@@ -14,16 +14,19 @@ class EventTableViewCell: UITableViewCell {
     @IBOutlet weak var EventTitle: UILabel!
     @IBOutlet weak var EventInterested: UILabel!
     @IBOutlet weak var EventWrapperView: UIView!
+    @IBOutlet weak var EventTime: UILabel!
+    @IBOutlet weak var EventLocation: UILabel!
     
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        EventWrapperView.layer.cornerRadius = 20
+//        EventWrapperView.layer.cornerRadius = 20
         EventWrapperView.backgroundColor = .white
         EventWrapperView.layer.borderWidth = 0
         EventWrapperView.layer.masksToBounds = true
         EventWrapperView.dropShadow();
+//        EventImage.layer.cornerRadius = 20
         
     }
 

@@ -21,5 +21,8 @@ struct RequestedData {
     var longitude: Float
     var altitude: Float
     var cover: URL
+    
 }
+
+
 

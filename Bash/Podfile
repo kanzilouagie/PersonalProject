@@ -14,5 +14,7 @@ pod 'FirebaseUI'
 pod 'FacebookCore'
 pod 'SwiftyJSON'
 pod 'Alamofire'
+pod 'PromiseKit'
+pod 'PromiseKit/Alamofire'
 
 end
