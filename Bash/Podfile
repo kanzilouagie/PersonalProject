@@ -11,5 +11,8 @@ pod 'FirebaseCore', '~> 6.4'
 pod 'FirebaseDatabase', '~> 6.1'
 pod 'Firebase/Analytics'
 pod 'FirebaseUI'
+pod 'FacebookCore'
+pod 'SwiftyJSON'
+pod 'Alamofire'
 
 end
