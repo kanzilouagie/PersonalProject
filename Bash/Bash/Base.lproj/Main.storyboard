@@ -438,13 +438,38 @@ Moeder en Vader Kanon</string>
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FriendsListCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="145" id="PZQ-d3-uiB" customClass="FriendsListTableViewCell" customModule="Bash" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="145"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendsListCell" rowHeight="67" id="PZQ-d3-uiB" customClass="FriendsListTableViewCell" customModule="Bash" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PZQ-d3-uiB" id="XdG-hU-ecU">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="145"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="67"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_account_circle3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="R7L-WI-VLh">
+                                                    <rect key="frame" x="16" y="5" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="tnd-Vg-SdL"/>
+                                                        <constraint firstAttribute="height" constant="50" id="yAl-3u-FDP"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arthur Devos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Vs-k6-ETp">
+                                                    <rect key="frame" x="74" y="19.5" width="101" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6Vs-k6-ETp" firstAttribute="centerY" secondItem="R7L-WI-VLh" secondAttribute="centerY" id="2ba-aB-D9W"/>
+                                                <constraint firstItem="R7L-WI-VLh" firstAttribute="top" secondItem="XdG-hU-ecU" secondAttribute="top" constant="5" id="Ppb-cB-Mkl"/>
+                                                <constraint firstItem="R7L-WI-VLh" firstAttribute="leading" secondItem="XdG-hU-ecU" secondAttribute="leading" constant="16" id="WAA-sB-CHh"/>
+                                                <constraint firstItem="6Vs-k6-ETp" firstAttribute="leading" secondItem="R7L-WI-VLh" secondAttribute="trailing" constant="8" id="w99-4O-pW7"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="friendsName" destination="6Vs-k6-ETp" id="k4Z-SC-MeS"/>
+                                            <outlet property="friendsPic" destination="R7L-WI-VLh" id="nvo-0P-cfi"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -465,6 +490,9 @@ Moeder en Vader Kanon</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hxq-OO-DRe"/>
                     </view>
+                    <connections>
+                        <outlet property="friendsTableView" destination="4Eh-zQ-mWN" id="UQW-ny-hQS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mz4-FK-dDN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -482,13 +510,38 @@ Moeder en Vader Kanon</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FriendsRequestsCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="171" id="8Tm-OI-w8p" customClass="FriendsRequestsTableViewCell" customModule="Bash" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="171"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendsRequestsCell" rowHeight="80" id="8Tm-OI-w8p" customClass="FriendsRequestsTableViewCell" customModule="Bash" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Tm-OI-w8p" id="PrL-Rk-8uO">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="171"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_account_circle3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="GrZ-9w-VlU">
+                                                    <rect key="frame" x="16" y="15" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="NRZ-fm-Ljv"/>
+                                                        <constraint firstAttribute="width" constant="50" id="h9S-jx-0eA"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Liam Temperman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSy-GT-hcd">
+                                                    <rect key="frame" x="74" y="29.5" width="132" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="uSy-GT-hcd" firstAttribute="centerY" secondItem="GrZ-9w-VlU" secondAttribute="centerY" id="4Yg-2p-UcE"/>
+                                                <constraint firstItem="uSy-GT-hcd" firstAttribute="leading" secondItem="GrZ-9w-VlU" secondAttribute="trailing" constant="8" id="Pel-Zr-nxO"/>
+                                                <constraint firstItem="GrZ-9w-VlU" firstAttribute="top" secondItem="PrL-Rk-8uO" secondAttribute="top" constant="15" id="aSn-nu-wG0"/>
+                                                <constraint firstItem="GrZ-9w-VlU" firstAttribute="leading" secondItem="PrL-Rk-8uO" secondAttribute="leading" constant="16" id="r96-cX-GXh"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="requestName" destination="uSy-GT-hcd" id="k4L-Az-fPp"/>
+                                            <outlet property="requestProfilePic" destination="GrZ-9w-VlU" id="HvY-qI-3gI"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -506,6 +559,9 @@ Moeder en Vader Kanon</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3bo-14-LzO"/>
                     </view>
+                    <connections>
+                        <outlet property="requestsTableView" destination="Y8q-79-rAd" id="ob9-Pw-12e"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O4L-UI-J0C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

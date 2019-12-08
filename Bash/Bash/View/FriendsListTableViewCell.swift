@@ -9,9 +9,17 @@
 import UIKit
 
 class FriendsListTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var friendsPic: UIImageView!
+    @IBOutlet weak var friendsName: UILabel!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        friendsPic.layer.masksToBounds = false
+        friendsPic.layer.borderColor = UIColor.black.cgColor
+        friendsPic.layer.cornerRadius = friendsPic.frame.height/2
+        friendsPic.clipsToBounds = true
         // Initialization code
     }
 

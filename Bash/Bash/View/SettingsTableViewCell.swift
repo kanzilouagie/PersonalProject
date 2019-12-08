@@ -46,8 +46,10 @@ class SettingsTableViewCell: UITableViewCell {
     @objc func handleSwitchAction(sender: UISwitch) {
         if sender.isOn {
             print("turned On")
+            UIApplication.shared.registerForRemoteNotifications()
         } else {
             print("turned of")
+            UIApplication.shared.unregisterForRemoteNotifications()
         }
     }
 

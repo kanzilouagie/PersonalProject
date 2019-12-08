@@ -9,7 +9,10 @@
 import UIKit
 
 class FriendsRequestsTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var requestProfilePic: UIImageView!
+    @IBOutlet weak var requestName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

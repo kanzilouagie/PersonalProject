@@ -293,6 +293,30 @@ extension HomeViewController: FUIAuthDelegate {
         }
         
         //data halen van de ingelogde user.
+        let db = Firestore.firestore()
+        let docRef = db.collection("users").document((authDataResult?.user.uid)!)
+        
+        docRef.getDocument { (document, error) in
+            if let document = document {
+                if document.exists {
+                    print("Document data: \(document.data()!)")
+                } else {
+                    print("document doesn't exist")
+                    db.collection("users").document((authDataResult?.user.uid)!).setData([
+                           "name": (authDataResult?.user.displayName)!,
+                           "profile_pic": (authDataResult?.user.photoURL?.absoluteString)!
+                       ]) { err in
+                           if let err = err {
+                               print("Error writing document: \(err)")
+                           } else {
+                               print("Document successfully written!")
+                           }
+                       }
+                }
+            }
+        }
+        
+   
 //        print("facebook profiel foto: ", authDataResult?.user.photoURL ?? "String")
     }
     
