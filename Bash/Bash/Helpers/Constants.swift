@@ -13,5 +13,9 @@ struct Constants {
     struct Storyboard {
         
         static let homeViewController = "HomeVC"
+        static let DetailViewController = "DetailVC"
+        static let SettingsViewController = "SettingsVC"
+        static let friendsListViewController = "FriendsListVC"
+        static let friendsRequestViewController = "FriendsRequestsVC"
     }
 }

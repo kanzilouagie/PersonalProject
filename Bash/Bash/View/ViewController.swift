@@ -51,22 +51,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
-//    func presentLogin() {
-//
-//        let providers: [FUIAuthProvider] = [
-//          FUIFacebookAuth(),
-//          FUIEmailAuth()
-//
-//        ]
-//        authUI!.providers = providers
-//
-//        guard authUI != nil else {
-//            return
-//        }
-//
-//        let authViewController = authUI!.authViewController()
-//        present(authViewController, animated: false, completion: nil)
-//    }
     
     func transitionToHome() {
         

@@ -21,6 +21,14 @@
 		E53D81E72395706200D83DB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53D81E62395706200D83DB5 /* Constants.swift */; };
 		E546D3F423987C9900E06E44 /* EventData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546D3F323987C9900E06E44 /* EventData.swift */; };
 		E546D3F62398802500E06E44 /* RequestedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546D3F52398802500E06E44 /* RequestedData.swift */; };
+		E546D3F8239C1E2600E06E44 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546D3F7239C1E2600E06E44 /* DetailViewController.swift */; };
+		E546D3FA239C540F00E06E44 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546D3F9239C540F00E06E44 /* SettingsViewController.swift */; };
+		E546D3FC239C6F2200E06E44 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546D3FB239C6F2200E06E44 /* SettingsTableViewCell.swift */; };
+		E546D3FF239C753400E06E44 /* SettingsSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546D3FE239C753400E06E44 /* SettingsSections.swift */; };
+		E546D401239CA7F800E06E44 /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546D400239CA7F800E06E44 /* FriendsListViewController.swift */; };
+		E546D403239CA80A00E06E44 /* FriendsRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546D402239CA80A00E06E44 /* FriendsRequestsViewController.swift */; };
+		E546D405239CA90600E06E44 /* FriendsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546D404239CA90600E06E44 /* FriendsListTableViewCell.swift */; };
+		E546D407239CA92300E06E44 /* FriendsRequestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546D406239CA92300E06E44 /* FriendsRequestsTableViewCell.swift */; };
 		E553428023961E9E009447F1 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553427F23961E9E009447F1 /* EventTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +51,14 @@
 		E53D81E62395706200D83DB5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E546D3F323987C9900E06E44 /* EventData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventData.swift; sourceTree = "<group>"; };
 		E546D3F52398802500E06E44 /* RequestedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedData.swift; sourceTree = "<group>"; };
+		E546D3F7239C1E2600E06E44 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		E546D3F9239C540F00E06E44 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E546D3FB239C6F2200E06E44 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		E546D3FE239C753400E06E44 /* SettingsSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSections.swift; sourceTree = "<group>"; };
+		E546D400239CA7F800E06E44 /* FriendsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
+		E546D402239CA80A00E06E44 /* FriendsRequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsRequestsViewController.swift; sourceTree = "<group>"; };
+		E546D404239CA90600E06E44 /* FriendsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListTableViewCell.swift; sourceTree = "<group>"; };
+		E546D406239CA92300E06E44 /* FriendsRequestsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsRequestsTableViewCell.swift; sourceTree = "<group>"; };
 		E553427F23961E9E009447F1 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		E5EE8EEE239595D000B55DA5 /* Bash.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bash.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +95,7 @@
 		E53D81B7239554DF00D83DB5 = {
 			isa = PBXGroup;
 			children = (
+				E546D3FD239C752000E06E44 /* Model */,
 				E53D81C2239554DF00D83DB5 /* Bash */,
 				E53D81C1239554DF00D83DB5 /* Products */,
 				D34BBD733914333968AB0927 /* Pods */,
@@ -118,6 +135,13 @@
 				E53D81E02395584D00D83DB5 /* HomeViewController.swift */,
 				E53D81C7239554DF00D83DB5 /* ViewController.swift */,
 				E553427F23961E9E009447F1 /* EventTableViewCell.swift */,
+				E546D3F7239C1E2600E06E44 /* DetailViewController.swift */,
+				E546D3F9239C540F00E06E44 /* SettingsViewController.swift */,
+				E546D3FB239C6F2200E06E44 /* SettingsTableViewCell.swift */,
+				E546D400239CA7F800E06E44 /* FriendsListViewController.swift */,
+				E546D402239CA80A00E06E44 /* FriendsRequestsViewController.swift */,
+				E546D404239CA90600E06E44 /* FriendsListTableViewCell.swift */,
+				E546D406239CA92300E06E44 /* FriendsRequestsTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -131,6 +155,14 @@
 				E546D3F52398802500E06E44 /* RequestedData.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E546D3FD239C752000E06E44 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E546D3FE239C753400E06E44 /* SettingsSections.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,16 +355,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E546D3F8239C1E2600E06E44 /* DetailViewController.swift in Sources */,
 				E546D3F62398802500E06E44 /* RequestedData.swift in Sources */,
+				E546D3FF239C753400E06E44 /* SettingsSections.swift in Sources */,
 				E553428023961E9E009447F1 /* EventTableViewCell.swift in Sources */,
+				E546D403239CA80A00E06E44 /* FriendsRequestsViewController.swift in Sources */,
 				E53D81C8239554DF00D83DB5 /* ViewController.swift in Sources */,
 				E546D3F423987C9900E06E44 /* EventData.swift in Sources */,
+				E546D407239CA92300E06E44 /* FriendsRequestsTableViewCell.swift in Sources */,
+				E546D3FC239C6F2200E06E44 /* SettingsTableViewCell.swift in Sources */,
+				E546D401239CA7F800E06E44 /* FriendsListViewController.swift in Sources */,
 				E53D81C4239554DF00D83DB5 /* AppDelegate.swift in Sources */,
 				E53D81C6239554DF00D83DB5 /* SceneDelegate.swift in Sources */,
 				E53D81CE239554DF00D83DB5 /* Bash.xcdatamodeld in Sources */,
 				E53D81E12395584D00D83DB5 /* HomeViewController.swift in Sources */,
 				E53D81E4239562DD00D83DB5 /* Utilities.swift in Sources */,
+				E546D405239CA90600E06E44 /* FriendsListTableViewCell.swift in Sources */,
 				E53D81E72395706200D83DB5 /* Constants.swift in Sources */,
+				E546D3FA239C540F00E06E44 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
