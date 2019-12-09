@@ -33,8 +33,13 @@ class FriendsListViewController: UIViewController, UITableViewDataSource {
         docRef.getDocument { (document, error) in
             if let document = document {
                 if document.exists {
-                    self.arrayFriends = document.data()!["friends"] as! [String]
-                    self.getFriends()
+                    if(document.data()!["friends"] != nil) {
+                         self.arrayFriends = document.data()!["friends"] as! [String]
+                        self.getFriends()
+                    } else {
+                        print("nothing in the document")
+                    }
+                   
                 } else {
                     print("document doesn't exist")
                 }

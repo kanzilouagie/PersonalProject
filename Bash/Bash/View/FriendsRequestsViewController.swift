@@ -24,13 +24,19 @@ class FriendsRequestsViewController: UIViewController, UITableViewDataSource {
         let user = Auth.auth().currentUser
         let db = Firestore.firestore()
         let docRef = db.collection("users").document((user?.uid)!)
+        requestsTableView.separatorStyle = .none
         
         docRef.getDocument { (document, error) in
             if let document = document {
                 if document.exists {
-                    self.arrayRequests = document.data()!["friendRequests"] as! [String]
-                    self.CurrentFriends = document.data()!["friends"] as! [String]
-                    self.getRequests()
+                    if(document.data()!["friendRequests"] != nil) {
+                        self.arrayRequests = document.data()!["friendRequests"] as! [String]
+                        self.CurrentFriends = document.data()!["friends"] as! [String]
+                        self.getRequests()
+                    } else {
+                        print("no friend requests")
+                    }
+
                 } else {
                     print("document doesn't exist")
                 }
@@ -90,7 +96,7 @@ extension FriendsRequestsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let alert = UIAlertController(title: "Verwijderen", message: "\(ArrayFriendsRequests[indexPath.row]["name"]! as! String) Verwijderen als vriend?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Toevoegen", message: "\(ArrayFriendsRequests[indexPath.row]["name"]! as! String) toevoegen als vriend?", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "JA", style: .default, handler: { (action) in
                     switch action.style {
                     case .default:

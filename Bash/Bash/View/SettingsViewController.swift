@@ -29,24 +29,7 @@ class SettingsViewController: UIViewController {
         checkLoggedIn()
         // Do any additional setup after loading the view.
     }
-    
 
-//    func getUserInfo() {
-//        if Auth.auth().currentUser != nil {
-//          let user = Auth.auth().currentUser
-//          if let user = user {
-//            let uid = user.uid
-//            let email = user.email
-//            let photoURL = user.photoURL
-//            print(uid)
-//            print(email!)
-//            print(photoURL!)
-//        } else {
-//          print("no user signed in")
-//        }
-//
-//        }
-//    }
     
     func checkLoggedIn() {
         if Auth.auth().currentUser != nil {
@@ -68,13 +51,13 @@ class SettingsViewController: UIViewController {
     
     func signIn() {
         let providers: [FUIAuthProvider] = [
-          FUIFacebookAuth(),
-          FUIEmailAuth()
+          FUIFacebookAuth()
           
         ]
         if authUI.auth?.currentUser == nil {
             self.authUI?.providers = providers
             self.present(authUI.authViewController(), animated: true, completion: nil)
+            
         } else {
             return
         }

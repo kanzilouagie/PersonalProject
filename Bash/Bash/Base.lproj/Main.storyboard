@@ -446,14 +446,14 @@ Moeder en Vader Kanon</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_account_circle3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="R7L-WI-VLh">
-                                                    <rect key="frame" x="16" y="5" width="50" height="50"/>
+                                                    <rect key="frame" x="16" y="8.5" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="tnd-Vg-SdL"/>
                                                         <constraint firstAttribute="height" constant="50" id="yAl-3u-FDP"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arthur Devos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Vs-k6-ETp">
-                                                    <rect key="frame" x="74" y="19.5" width="101" height="21"/>
+                                                    <rect key="frame" x="74" y="23" width="101" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -461,7 +461,7 @@ Moeder en Vader Kanon</string>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="6Vs-k6-ETp" firstAttribute="centerY" secondItem="R7L-WI-VLh" secondAttribute="centerY" id="2ba-aB-D9W"/>
-                                                <constraint firstItem="R7L-WI-VLh" firstAttribute="top" secondItem="XdG-hU-ecU" secondAttribute="top" constant="5" id="Ppb-cB-Mkl"/>
+                                                <constraint firstItem="R7L-WI-VLh" firstAttribute="centerY" secondItem="XdG-hU-ecU" secondAttribute="centerY" id="Agv-st-kDz"/>
                                                 <constraint firstItem="R7L-WI-VLh" firstAttribute="leading" secondItem="XdG-hU-ecU" secondAttribute="leading" constant="16" id="WAA-sB-CHh"/>
                                                 <constraint firstItem="6Vs-k6-ETp" firstAttribute="leading" secondItem="R7L-WI-VLh" secondAttribute="trailing" constant="8" id="w99-4O-pW7"/>
                                             </constraints>
@@ -534,7 +534,7 @@ Moeder en Vader Kanon</string>
                                             <constraints>
                                                 <constraint firstItem="uSy-GT-hcd" firstAttribute="centerY" secondItem="GrZ-9w-VlU" secondAttribute="centerY" id="4Yg-2p-UcE"/>
                                                 <constraint firstItem="uSy-GT-hcd" firstAttribute="leading" secondItem="GrZ-9w-VlU" secondAttribute="trailing" constant="8" id="Pel-Zr-nxO"/>
-                                                <constraint firstItem="GrZ-9w-VlU" firstAttribute="top" secondItem="PrL-Rk-8uO" secondAttribute="top" constant="15" id="aSn-nu-wG0"/>
+                                                <constraint firstItem="GrZ-9w-VlU" firstAttribute="centerY" secondItem="PrL-Rk-8uO" secondAttribute="centerY" id="e6t-fw-GeK"/>
                                                 <constraint firstItem="GrZ-9w-VlU" firstAttribute="leading" secondItem="PrL-Rk-8uO" secondAttribute="leading" constant="16" id="r96-cX-GXh"/>
                                             </constraints>
                                         </tableViewCellContentView>

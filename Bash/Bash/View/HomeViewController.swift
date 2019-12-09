@@ -13,6 +13,7 @@ import Alamofire
 import PromiseKit
 import Firebase
 import FirebaseDatabase
+import FBSDKLoginKit
 
 class HomeViewController: UIViewController, UITableViewDataSource  {
     
@@ -41,7 +42,7 @@ class HomeViewController: UIViewController, UITableViewDataSource  {
             super.viewWillAppear(animated)
             
             //logout af en aan zetten voor debugging purposes
-            
+//            logOut()
             
             authListener = Auth.auth().addStateDidChangeListener { (auth, user) in
 
@@ -94,8 +95,7 @@ class HomeViewController: UIViewController, UITableViewDataSource  {
     
     func signIn() {
         let providers: [FUIAuthProvider] = [
-          FUIFacebookAuth(),
-          FUIEmailAuth()
+          FUIFacebookAuth()
           
         ]
         if authUI.auth?.currentUser == nil {
@@ -302,21 +302,20 @@ extension HomeViewController: FUIAuthDelegate {
                     print("Document data: \(document.data()!)")
                 } else {
                     print("document doesn't exist")
-                    db.collection("users").document((authDataResult?.user.uid)!).setData([
-                           "name": (authDataResult?.user.displayName)!,
-                           "profile_pic": (authDataResult?.user.photoURL?.absoluteString)!
-                       ]) { err in
-                           if let err = err {
-                               print("Error writing document: \(err)")
-                           } else {
-                               print("Document successfully written!")
-                           }
-                       }
                 }
             }
         }
-        
-   
+        docRef.setData([
+            "name": (authDataResult?.user.displayName)!,
+            "profile_pic": (authDataResult?.user.photoURL)!
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+    
 //        print("facebook profiel foto: ", authDataResult?.user.photoURL ?? "String")
     }
     
