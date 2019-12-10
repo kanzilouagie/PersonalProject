@@ -19,6 +19,10 @@ class FriendsRequestsViewController: UIViewController, UITableViewDataSource {
     var ArrayFriendsRequests = [[String: Any]]()
     var CurrentFriends: [String] = []
     
+    var arrayRequests2: [String] = []
+    var ArrayFriendsRequests2 = [[String: Any]]()
+    var CurrentFriends2: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let user = Auth.auth().currentUser
@@ -47,29 +51,74 @@ class FriendsRequestsViewController: UIViewController, UITableViewDataSource {
         // Do any additional setup after loading the view.
     }
     
-        func getRequests() {
+    func getOtherUserData(uid: String) {
             let db = Firestore.firestore()
-            arrayRequests.forEach({ (request) in
-            DispatchQueue.main.async {
-            let docRef = db.collection("users").document(request)
+            let docRef = db.collection("users").document(uid)
             docRef.getDocument { (document, error) in
-                    if let document = document {
-                        if document.exists {
-                            let data = document.data()
-                            self.ArrayFriendsRequests.append(data!)
+                if let document = document {
+                    if document.exists {
+                        if(document.data()!["friendRequests"] != nil) {
+                            self.arrayRequests2 = document.data()!["friendRequests"] as! [String]
+                            self.CurrentFriends2 = document.data()!["friends"] as! [String]
+                            self.getRequests2()
                         } else {
-                            print(document.data()!)
-                            print("document doesn't exist")
+                            print("no friend requests")
                         }
+
+                    } else {
+                        print("document doesn't exist")
                     }
-                
-               self.requestsTableView.reloadData()
-
-                   }
-            }
-            })
-
+                }
         }
+    }
+    
+        func getRequests() {
+             let db = Firestore.firestore()
+             arrayRequests.forEach({ (request) in
+             DispatchQueue.main.async {
+             let docRef = db.collection("users").document(request)
+             docRef.getDocument { (document, error) in
+                     if let document = document {
+                         if document.exists {
+                             let data = document.data()
+                             self.ArrayFriendsRequests.append(data!)
+                         } else {
+                             print(document.data()!)
+                             print("document doesn't exist")
+                         }
+                     }
+                 
+                self.requestsTableView.reloadData()
+
+                    }
+             }
+             })
+
+         }
+    
+    func getRequests2() {
+         let db = Firestore.firestore()
+         arrayRequests2.forEach({ (request) in
+         DispatchQueue.main.async {
+         let docRef = db.collection("users").document(request)
+         docRef.getDocument { (document, error) in
+                 if let document = document {
+                     if document.exists {
+                         let data = document.data()
+                         self.ArrayFriendsRequests2.append(data!)
+                     } else {
+                         print(document.data()!)
+                         print("document doesn't exist")
+                     }
+                 }
+             
+            self.requestsTableView.reloadData()
+
+                }
+         }
+         })
+
+     }
     
 }
 
@@ -114,9 +163,16 @@ extension FriendsRequestsViewController: UITableViewDelegate {
                     switch action.style {
                     case .default:
                         let user = Auth.auth().currentUser
+                        let user2 = self.ArrayFriendsRequests[indexPath.row]["uid"]! as! String
                         let db = Firestore.firestore()
-                        let docRef = db.collection("users").document((user?.uid)!)
-                        
+                        let docRef = db.collection("users").document(user!.uid)
+                        let docRef2 = db.collection("users").document(user2)
+                        self.getOtherUserData(uid: user2)
+                        self.CurrentFriends2.append(user!.uid)
+                        docRef2.setData([
+                            "friends": self.CurrentFriends2,
+                            "friendRequests": self.arrayRequests2
+                        ], merge: true)
                         self.CurrentFriends.append(self.arrayRequests[indexPath.row])
                         self.arrayRequests.remove(at: indexPath.row)
                         docRef.setData([

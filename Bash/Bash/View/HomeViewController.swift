@@ -304,7 +304,10 @@ extension HomeViewController: FUIAuthDelegate {
                     print("document doesn't exist")
                     db.collection("users").document(authDataResult!.user.uid).setData([
                         "name": (authDataResult!.user.displayName)!,
-                        "profile_pic": authDataResult!.user.photoURL!.absoluteString
+                        "profile_pic": authDataResult!.user.photoURL!.absoluteString,
+                        "friends": [],
+                        "friendRequests": [],
+                        "uid": authDataResult!.user.uid
                     ])
 //                    print(authDataResult?.user.photoURL ?? String.self)
 //                    print((authDataResult!.user.displayName)!)
