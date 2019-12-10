@@ -66,16 +66,18 @@ class FriendsListViewController: UIViewController, UITableViewDataSource {
             
             self.friendsTableView.reloadData()
             
-//                    print(self.ArrayFriendsList)
-                   // Do any additional setup after loading the view.
                }
         }
         })
 
     }
     
-
+    
+    
+    
 }
+
+
 
 extension FriendsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -88,13 +90,19 @@ extension FriendsListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsListCell", for: indexPath) as! FriendsListTableViewCell
-        let friend = ArrayFriendsList[indexPath.row]
-        let profilePicSized = NSURL(string: "\((friend["profile_pic"])!)?width=300&height=300")!  as URL
-        cell.friendsPic.load(url: profilePicSized)
-        cell.friendsName.text = ArrayFriendsList[indexPath.row]["name"]! as! String
-        print(ArrayFriendsList[indexPath.row]["name"]! as! String)
-        return cell
+        if(ArrayFriendsList.count != 0) {
+            let friend = ArrayFriendsList[indexPath.row]
+             let profilePicSized = NSURL(string: "\((friend["profile_pic"])!)?width=300&height=300")!  as URL
+             cell.friendsPic.load(url: profilePicSized)
+             cell.friendsName.text = ArrayFriendsList[indexPath.row]["name"]! as! String
+             print(ArrayFriendsList[indexPath.row]["name"]! as! String)
+             return cell
+        } else {
+            cell.friendsName.text = "no friends found"
+            return cell
+        }
+ 
     }
-    
-    
 }
+
+

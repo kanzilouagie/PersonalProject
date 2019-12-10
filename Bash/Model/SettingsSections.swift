@@ -32,8 +32,8 @@ enum SocialOptions: Int, CaseIterable, SectionType {
     var containsSwitch: Bool { return false}
     var description: String {
         switch self {
-        case .editProfile: return "Profiel Bewerken"
-        case .logOut: return "Uitloggen"
+        case .editProfile: return "Uitloggen"
+        case .logOut: return "Vrienden Toevoegen"
         case .friendList: return "Vriendenlijst"
         case .requestList: return "Vriendschapsverzoeken"
         }

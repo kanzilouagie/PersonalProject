@@ -42,6 +42,7 @@ class DetailViewController: UIViewController {
         startTime.removeFirst(11)
         startTime.removeLast(8)
         eventStartTime.text = startTime
+        eventLocation.text = DetailLocation
         eventDescription.text = DetailDescription
         eventImage.layer.shadowRadius = 10
         eventImage.layer.cornerRadius = 20

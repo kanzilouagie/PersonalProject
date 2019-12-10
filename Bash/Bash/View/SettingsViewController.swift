@@ -15,6 +15,9 @@ class SettingsViewController: UIViewController {
     
     
     @IBOutlet weak var ProfilePic: UIImageView!
+    @IBOutlet weak var ProfileName: UILabel!
+    @IBOutlet weak var ProfileEmail: UILabel!
+    
     
     
     var authUI: FUIAuth!
@@ -41,10 +44,16 @@ class SettingsViewController: UIViewController {
             ProfilePic.layer.borderColor = UIColor.black.cgColor
             ProfilePic.layer.cornerRadius = ProfilePic.frame.height/2
             ProfilePic.clipsToBounds = true
+            ProfileName.text = user!.displayName
+            ProfileEmail.text = user!.email
         } else {
-            self.authUI = FUIAuth.defaultAuthUI()
-            self.authUI?.delegate = self
-            signIn()
+//            self.authUI = FUIAuth.defaultAuthUI()
+//            self.authUI?.delegate = self
+//            signIn()
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let DvC = storyBoard.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController) as! HomeViewController
+            self.navigationController?.view.layer.add(CATransition().segueFromRight(), forKey: nil)
+            self.navigationController?.pushViewController(DvC, animated: false)
             
         }
     }
@@ -223,8 +232,68 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource,FUI
                 let DvC = storyBoard.instantiateViewController(withIdentifier: Constants.Storyboard.friendsRequestViewController) as! FriendsRequestsViewController
                 self.navigationController?.pushViewController(DvC, animated: true)
             }
+            
+            if((SocialOptions(rawValue: indexPath.row)?.description)! == "Vrienden Toevoegen") {
+                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                let DvC = storyBoard.instantiateViewController(withIdentifier: Constants.Storyboard.AddFriendsViewController) as! AddFriendsViewController
+                self.navigationController?.pushViewController(DvC, animated: true)
+            }
+            
         case .Communication:
             print((CommunicationOptions(rawValue: indexPath.row)?.description)!)
         }
     }
+}
+
+extension CATransition {
+
+//New viewController will appear from bottom of screen.
+func segueFromBottom() -> CATransition {
+    self.duration = 0 //set the duration to whatever you'd like.
+    self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+    self.type = CATransitionType.moveIn
+    self.subtype = CATransitionSubtype.fromTop
+    return self
+}
+//New viewController will appear from top of screen.
+func segueFromTop() -> CATransition {
+    self.duration = 0.375 //set the duration to whatever you'd like.
+    self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+    self.type = CATransitionType.moveIn
+    self.subtype = CATransitionSubtype.fromBottom
+    return self
+}
+ //New viewController will appear from left side of screen.
+func segueFromLeft() -> CATransition {
+    self.duration = 0.5 //set the duration to whatever you'd like.
+    self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+    self.type = CATransitionType.moveIn
+    self.subtype = CATransitionSubtype.fromLeft
+    return self
+}
+//New viewController will pop from left side of screen.
+func segueFromRight() -> CATransition {
+    self.duration = 0.5 //set the duration to whatever you'd like.
+    self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+    self.type = CATransitionType.moveIn
+    self.subtype = CATransitionSubtype.fromRight
+    return self
+    }
+    
+//New viewController will pop from right side of screen.
+func popFromRight() -> CATransition {
+    self.duration = 0.1 //set the duration to whatever you'd like.
+    self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+    self.type = CATransitionType.reveal
+    self.subtype = CATransitionSubtype.fromRight
+    return self
+}
+//New viewController will appear from left side of screen.
+func popFromLeft() -> CATransition {
+    self.duration = 0.1 //set the duration to whatever you'd like.
+    self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+    self.type = CATransitionType.reveal
+    self.subtype = CATransitionSubtype.fromLeft
+    return self
+   }
 }

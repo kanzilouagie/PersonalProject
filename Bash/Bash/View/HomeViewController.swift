@@ -302,19 +302,16 @@ extension HomeViewController: FUIAuthDelegate {
                     print("Document data: \(document.data()!)")
                 } else {
                     print("document doesn't exist")
+                    db.collection("users").document(authDataResult!.user.uid).setData([
+                        "name": (authDataResult!.user.displayName)!,
+                        "profile_pic": authDataResult!.user.photoURL!.absoluteString
+                    ])
+//                    print(authDataResult?.user.photoURL ?? String.self)
+//                    print((authDataResult!.user.displayName)!)
                 }
             }
         }
-        docRef.setData([
-            "name": (authDataResult?.user.displayName)!,
-            "profile_pic": (authDataResult?.user.photoURL)!
-        ]) { err in
-            if let err = err {
-                print("Error writing document: \(err)")
-            } else {
-                print("Document successfully written!")
-            }
-        }
+        
     
 //        print("facebook profiel foto: ", authDataResult?.user.photoURL ?? "String")
     }
@@ -323,7 +320,7 @@ extension HomeViewController: FUIAuthDelegate {
         let loginViewController = FUIAuthPickerViewController(authUI: authUI)
         
         loginViewController.title = "Bash"
-        loginViewController.view.subviews[0].backgroundColor = .black
+        loginViewController.view.subviews[0].backgroundColor = UIColor(red: 255/255, green: 0/255, blue: 71/255, alpha: 1)
         loginViewController.view.subviews[0].subviews[0].backgroundColor = UIColor.clear
         loginViewController.navigationItem.leftBarButtonItem = nil
         
