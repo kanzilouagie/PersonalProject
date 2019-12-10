@@ -46,7 +46,7 @@
                                                     <rect key="frame" x="20" y="11" width="374" height="320"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="omslag" translatesAutoresizingMaskIntoConstraints="NO" id="Zee-Ol-ofl">
-                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="230.00000000000011"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="230"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="230" id="u4O-RC-cyQ"/>
                                                             </constraints>
@@ -195,7 +195,7 @@
                                         <rect key="frame" x="8" y="8" width="398" height="837"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="omslag" translatesAutoresizingMaskIntoConstraints="NO" id="RAY-AJ-Ly2">
-                                                <rect key="frame" x="0.0" y="0.0" width="398" height="250.00000000000011"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="398" height="250"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="250" id="9MU-df-dJc"/>
                                                 </constraints>

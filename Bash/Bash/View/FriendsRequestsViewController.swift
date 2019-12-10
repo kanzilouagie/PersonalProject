@@ -77,7 +77,12 @@ class FriendsRequestsViewController: UIViewController, UITableViewDataSource {
 
 extension FriendsRequestsViewController: UITableViewDelegate {
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return ArrayFriendsRequests.count
+            if(ArrayFriendsRequests.count != 0) {
+                return ArrayFriendsRequests.count
+            } else {
+                return 1
+            }
+
         }
         
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -86,12 +91,20 @@ extension FriendsRequestsViewController: UITableViewDelegate {
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsRequestsCell", for: indexPath) as! FriendsRequestsTableViewCell
-            let friend = ArrayFriendsRequests[indexPath.row]
-            let profilePicSized = NSURL(string: "\((friend["profile_pic"])!)?width=300&height=300")!  as URL
-            cell.requestProfilePic.load(url: profilePicSized)
-            cell.requestName.text = (ArrayFriendsRequests[indexPath.row]["name"]! as! String)
-            print(ArrayFriendsRequests[indexPath.row]["name"]! as! String)
-            return cell
+            
+            if(ArrayFriendsRequests.count != 0) {
+                let friend = ArrayFriendsRequests[indexPath.row]
+                let profilePicSized = NSURL(string: "\((friend["profile_pic"])!)?width=300&height=300")!  as URL
+                cell.requestProfilePic.load(url: profilePicSized)
+                cell.requestName.text = (ArrayFriendsRequests[indexPath.row]["name"]! as! String)
+                print(ArrayFriendsRequests[indexPath.row]["name"]! as! String)
+                return cell
+            } else {
+                cell.requestProfilePic.image = UIImage(named: "logo")
+                cell.requestName.text = "no requests"
+                return cell
+            }
+            
         }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

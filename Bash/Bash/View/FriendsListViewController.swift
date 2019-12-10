@@ -29,7 +29,6 @@ class FriendsListViewController: UIViewController, UITableViewDataSource {
         let user = Auth.auth().currentUser
         let db = Firestore.firestore()
         let docRef = db.collection("users").document((user?.uid)!)
-    
         docRef.getDocument { (document, error) in
             if let document = document {
                 if document.exists {
@@ -81,7 +80,12 @@ class FriendsListViewController: UIViewController, UITableViewDataSource {
 
 extension FriendsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ArrayFriendsList.count
+        if(ArrayFriendsList.count != 0) {
+                return ArrayFriendsList.count
+        } else {
+            return 1
+        }
+
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -99,6 +103,7 @@ extension FriendsListViewController: UITableViewDelegate {
              return cell
         } else {
             cell.friendsName.text = "no friends found"
+            cell.friendsPic.image = UIImage(named: "logo")
             return cell
         }
  
