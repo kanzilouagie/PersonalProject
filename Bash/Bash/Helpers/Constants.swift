@@ -18,5 +18,7 @@ struct Constants {
         static let friendsListViewController = "FriendsListVC"
         static let friendsRequestViewController = "FriendsRequestsVC"
         static let AddFriendsViewController = "AddFriendsVC"
+        static let pickLocationViewController = "PickerVC"
+        static let checkInViewController = "CheckInVC"
     }
 }

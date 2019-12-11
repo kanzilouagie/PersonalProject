@@ -21,6 +21,10 @@
 		E53D81E12395584D00D83DB5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53D81E02395584D00D83DB5 /* HomeViewController.swift */; };
 		E53D81E4239562DD00D83DB5 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53D81E3239562DD00D83DB5 /* Utilities.swift */; };
 		E53D81E72395706200D83DB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53D81E62395706200D83DB5 /* Constants.swift */; };
+		E541B1D623A118660096B2D9 /* PickLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E541B1D523A118660096B2D9 /* PickLocationViewController.swift */; };
+		E541B1D823A1189E0096B2D9 /* PickLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E541B1D723A1189E0096B2D9 /* PickLocationTableViewCell.swift */; };
+		E541B1DA23A13B8B0096B2D9 /* CheckInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E541B1D923A13B8B0096B2D9 /* CheckInViewController.swift */; };
+		E541B1DC23A13BBA0096B2D9 /* CheckInTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E541B1DB23A13BBA0096B2D9 /* CheckInTableViewCell.swift */; };
 		E546D3F423987C9900E06E44 /* EventData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546D3F323987C9900E06E44 /* EventData.swift */; };
 		E546D3F62398802500E06E44 /* RequestedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546D3F52398802500E06E44 /* RequestedData.swift */; };
 		E546D3F8239C1E2600E06E44 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546D3F7239C1E2600E06E44 /* DetailViewController.swift */; };
@@ -53,6 +57,10 @@
 		E53D81E02395584D00D83DB5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E53D81E3239562DD00D83DB5 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		E53D81E62395706200D83DB5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E541B1D523A118660096B2D9 /* PickLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickLocationViewController.swift; sourceTree = "<group>"; };
+		E541B1D723A1189E0096B2D9 /* PickLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickLocationTableViewCell.swift; sourceTree = "<group>"; };
+		E541B1D923A13B8B0096B2D9 /* CheckInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInViewController.swift; sourceTree = "<group>"; };
+		E541B1DB23A13BBA0096B2D9 /* CheckInTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInTableViewCell.swift; sourceTree = "<group>"; };
 		E546D3F323987C9900E06E44 /* EventData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventData.swift; sourceTree = "<group>"; };
 		E546D3F52398802500E06E44 /* RequestedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedData.swift; sourceTree = "<group>"; };
 		E546D3F7239C1E2600E06E44 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +156,10 @@
 				E546D406239CA92300E06E44 /* FriendsRequestsTableViewCell.swift */,
 				E519A587239ECF230060D3B7 /* AddFriendsViewController.swift */,
 				E519A589239ECF4F0060D3B7 /* AddFriendsTableViewCell.swift */,
+				E541B1D523A118660096B2D9 /* PickLocationViewController.swift */,
+				E541B1D723A1189E0096B2D9 /* PickLocationTableViewCell.swift */,
+				E541B1D923A13B8B0096B2D9 /* CheckInViewController.swift */,
+				E541B1DB23A13BBA0096B2D9 /* CheckInTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -365,12 +377,14 @@
 				E546D3F62398802500E06E44 /* RequestedData.swift in Sources */,
 				E546D3FF239C753400E06E44 /* SettingsSections.swift in Sources */,
 				E553428023961E9E009447F1 /* EventTableViewCell.swift in Sources */,
+				E541B1DA23A13B8B0096B2D9 /* CheckInViewController.swift in Sources */,
 				E546D403239CA80A00E06E44 /* FriendsRequestsViewController.swift in Sources */,
 				E53D81C8239554DF00D83DB5 /* ViewController.swift in Sources */,
 				E546D3F423987C9900E06E44 /* EventData.swift in Sources */,
 				E546D407239CA92300E06E44 /* FriendsRequestsTableViewCell.swift in Sources */,
 				E546D3FC239C6F2200E06E44 /* SettingsTableViewCell.swift in Sources */,
 				E546D401239CA7F800E06E44 /* FriendsListViewController.swift in Sources */,
+				E541B1D623A118660096B2D9 /* PickLocationViewController.swift in Sources */,
 				E53D81C4239554DF00D83DB5 /* AppDelegate.swift in Sources */,
 				E53D81C6239554DF00D83DB5 /* SceneDelegate.swift in Sources */,
 				E53D81CE239554DF00D83DB5 /* Bash.xcdatamodeld in Sources */,
@@ -379,6 +393,8 @@
 				E546D405239CA90600E06E44 /* FriendsListTableViewCell.swift in Sources */,
 				E53D81E72395706200D83DB5 /* Constants.swift in Sources */,
 				E546D3FA239C540F00E06E44 /* SettingsViewController.swift in Sources */,
+				E541B1D823A1189E0096B2D9 /* PickLocationTableViewCell.swift in Sources */,
+				E541B1DC23A13BBA0096B2D9 /* CheckInTableViewCell.swift in Sources */,
 				E519A588239ECF230060D3B7 /* AddFriendsViewController.swift in Sources */,
 				E519A58A239ECF4F0060D3B7 /* AddFriendsTableViewCell.swift in Sources */,
 			);

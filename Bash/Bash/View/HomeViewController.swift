@@ -19,7 +19,9 @@ class HomeViewController: UIViewController, UITableViewDataSource  {
     
     @IBOutlet weak var eventTableView: UITableView!
     @IBOutlet weak var ProfileButton: UIBarButtonItem!
+    @IBOutlet weak var locationPickerButton: UIButton!
     
+    static var selectedCafe: String = "Kortrijk"
     var eventsData: [RequestedData] = []
     var arrayData: [JSON] = []
     var arrayCafes: [String] = []
@@ -35,6 +37,7 @@ class HomeViewController: UIViewController, UITableViewDataSource  {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        getUserInfo()
+        locationPickerButton.setTitle(HomeViewController.selectedCafe, for: .normal)
         fetchCafesFromDatabase()
     }
     
@@ -67,6 +70,28 @@ class HomeViewController: UIViewController, UITableViewDataSource  {
             }
         }
     
+    @IBAction func CheckInButtonTapped(_ sender: UIBarButtonItem) {
+        self.isPresented = false
+        authListener = Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user != nil {
+                        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                        let DvC = storyBoard.instantiateViewController(withIdentifier: Constants.Storyboard.checkInViewController) as! CheckInViewController
+                if(self.isPresented == false) {
+                    self.navigationController?.pushViewController(DvC, animated: true)
+                    print("present deze viewController")
+                    self.isPresented = true
+                } else {
+                    print("already deze viewcontroller")
+                }
+            } else {
+                self.authUI = FUIAuth.defaultAuthUI()
+                self.authUI?.delegate = self
+                self.signIn()
+            }
+        }
+    }
+    
+    
     
     @IBAction func ProfileButtonTapped(_ sender: UIBarButtonItem) {
             self.isPresented = false
@@ -89,6 +114,14 @@ class HomeViewController: UIViewController, UITableViewDataSource  {
                 }
             }
         }
+    
+    
+    @IBAction func pickLocation(_ sender: UIButton) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let DvC = storyBoard.instantiateViewController(withIdentifier: Constants.Storyboard.pickLocationViewController) as! PickLocationViewController
+        
+        self.navigationController?.pushViewController(DvC, animated: true)
+    }
     
     
 
@@ -150,7 +183,7 @@ class HomeViewController: UIViewController, UITableViewDataSource  {
         var customObjects = eventsData
         DispatchQueue.main.async {
         customObjects = customObjects.sorted(by: {
-            $0.start_time.compare($1.start_time) == .orderedDescending
+            $0.start_time.compare($1.start_time) == .orderedAscending
         })
 
 //        for obj in customObjects {
@@ -164,15 +197,16 @@ class HomeViewController: UIViewController, UITableViewDataSource  {
     
     
     func fetchCafesFromDatabase() {
+        if(HomeViewController.selectedCafe == "Alle buurten") {
         let db = Firestore.firestore()
                 DispatchQueue.main.async {
-                    db.collection("cafes").whereField("stad", isEqualTo: "Kortrijk").getDocuments() { (querySnapshot, err) in
+                    db.collection("cafes").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
                     if let cafenaam = document.data()["cafenaam"] as? String {
-                        self.arrayCafes.append("https://graph.facebook.com/\(cafenaam)/events?access_token=EAAikZAhKooxgBAPT4MvuW64cJ8rwlkqdI1ewatDXwYEBUATA4zmh1x6yNEXhZAtKjOgUfVrefD0WYFlb0QsUHlz4aqRZAkC4LZByXLXRYkhCScZBLdZApe8HnzOrmzMuje9dejVIzSBY3OZBkWzlRFBT9JzKntjCHLki5xxPXwNsQZDZD&fields=description,end_time,name,place,start_time,id,interested_count,cover&filter=stream")
+                    self.arrayCafes.append("https://graph.facebook.com/\(cafenaam)/events?access_token=EAAikZAhKooxgBAPT4MvuW64cJ8rwlkqdI1ewatDXwYEBUATA4zmh1x6yNEXhZAtKjOgUfVrefD0WYFlb0QsUHlz4aqRZAkC4LZByXLXRYkhCScZBLdZApe8HnzOrmzMuje9dejVIzSBY3OZBkWzlRFBT9JzKntjCHLki5xxPXwNsQZDZD&fields=description,end_time,name,place,start_time,id,interested_count,cover&filter=stream")
 //                            print(cafenaam)
                     }
                    
@@ -181,6 +215,25 @@ class HomeViewController: UIViewController, UITableViewDataSource  {
             self.fetchMultipleData()
         }
     }
+        } else {
+            let db = Firestore.firestore()
+                    DispatchQueue.main.async {
+                        db.collection("cafes").whereField("stad", isEqualTo: HomeViewController.selectedCafe).getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        if let cafenaam = document.data()["cafenaam"] as? String {
+                            self.arrayCafes.append("https://graph.facebook.com/\(cafenaam)/events?access_token=EAAikZAhKooxgBAPT4MvuW64cJ8rwlkqdI1ewatDXwYEBUATA4zmh1x6yNEXhZAtKjOgUfVrefD0WYFlb0QsUHlz4aqRZAkC4LZByXLXRYkhCScZBLdZApe8HnzOrmzMuje9dejVIzSBY3OZBkWzlRFBT9JzKntjCHLki5xxPXwNsQZDZD&fields=description,end_time,name,place,start_time,id,interested_count,cover&filter=stream")
+    //                            print(cafenaam)
+                        }
+                       
+                    }
+                }
+                self.fetchMultipleData()
+            }
+        }
+        }
     }
     
     
@@ -224,7 +277,7 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! EventTableViewCell
-        let event = eventsData.reversed()[indexPath.row]
+        let event = eventsData[indexPath.row]
         cell.EventTitle.text = event.name
         cell.EventInterested.text = String(event.interested_count)
         cell.EventImage.load(url: event.cover)
@@ -243,14 +296,14 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let DvC = storyBoard.instantiateViewController(withIdentifier: Constants.Storyboard.DetailViewController) as! DetailViewController
-        let event = eventsData.reversed()[indexPath.row]
+        let event = eventsData[indexPath.row]
         DvC.DetailDescription = event.Description
         DvC.DetailImage = event.cover
         DvC.DetailInterestedCount = event.interested_count
         DvC.DetailLocation = event.placename
         DvC.DetailStartTime = event.start_time
         DvC.DetailTitle = event.name
-        
+        DvC.DetailId = event.id
         self.navigationController?.pushViewController(DvC, animated: true)
                
 //        view.window?.rootViewController = DvC

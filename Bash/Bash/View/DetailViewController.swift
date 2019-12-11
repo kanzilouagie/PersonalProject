@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class DetailViewController: UIViewController {
     
@@ -17,6 +18,7 @@ class DetailViewController: UIViewController {
     var DetailDescription: String?
     var DetailLocation: String?
     var DetailStartTime: String?
+    var DetailId: String?
     
     
     
@@ -55,14 +57,26 @@ class DetailViewController: UIViewController {
     }
     
     
-    
-    @IBAction func BackButtonTapped(_ sender: UIBarButtonItem) {
+    @IBAction func BashButtonTapped(_ sender: UIButton) {
+        let user = Auth.auth().currentUser!.uid
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let DvC = storyBoard.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController) as! HomeViewController
+        let DvC = storyBoard.instantiateViewController(withIdentifier: Constants.Storyboard.checkInViewController) as! CheckInViewController
         
-//        view.window?.rootViewController = DvC
-//        view.window?.makeKeyAndVisible()
+        let db = Firestore.firestore()
+        let docRef = db.collection("check-ins")
+        let timestamp = NSDate().timeIntervalSince1970
+        let myTimeInterval = TimeInterval(timestamp)
+        let time = NSDate(timeIntervalSince1970: TimeInterval(myTimeInterval))
+        docRef.addDocument(data: [
+            "date" : time,
+            "userUID": user,
+            "eventUID": self.DetailId!
+        ])
+        
+        self.navigationController?.pushViewController(DvC, animated: true)
     }
+    
+    
     
   
     
