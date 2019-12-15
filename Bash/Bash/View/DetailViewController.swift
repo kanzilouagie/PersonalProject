@@ -52,6 +52,7 @@ class DetailViewController: UIViewController {
         eventDescription.sizeToFit()
         eventDescription.isScrollEnabled = false
         eventDescription.isEditable = false
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(rightButtonTapped))
         // Do any additional setup after loading the view.
         
     }
@@ -73,6 +74,13 @@ class DetailViewController: UIViewController {
             "eventUID": self.DetailId!
         ])
         
+        self.navigationController?.pushViewController(DvC, animated: true)
+    }
+    
+    @objc func rightButtonTapped() {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let DvC = storyBoard.instantiateViewController(withIdentifier: Constants.Storyboard.arViewController) as! ARCameraViewController
+        DvC.imageForAR = self.DetailImage
         self.navigationController?.pushViewController(DvC, animated: true)
     }
     

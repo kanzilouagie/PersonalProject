@@ -370,6 +370,64 @@
             </objects>
             <point key="canvasLocation" x="3852.1739130434785" y="585.9375"/>
         </scene>
+        <!--Camera View Controller-->
+        <scene sceneID="CjM-eu-e2z">
+            <objects>
+                <viewController storyboardIdentifier="ARVC" id="r2Q-kf-mG5" customClass="ARCameraViewController" customModule="Bash" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="T0f-yN-hdg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U3d-TP-EI3">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6SL-6D-wbx">
+                                <rect key="frame" x="177.5" y="780" width="59" height="57"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="camera.circle" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
+                                </state>
+                                <connections>
+                                    <action selector="CameraButtonTapped:" destination="r2Q-kf-mG5" eventType="touchUpInside" id="LIH-ye-8sH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TeY-Ci-gYX">
+                                <rect key="frame" x="344" y="64" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="8hf-Ex-lwn"/>
+                                    <constraint firstAttribute="width" constant="50" id="F7w-So-cLc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="arrowshape.turn.up.left" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40" scale="default"/>
+                                </state>
+                                <connections>
+                                    <action selector="reloadView:" destination="r2Q-kf-mG5" eventType="touchUpInside" id="PKi-uW-KcM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="U3d-TP-EI3" firstAttribute="leading" secondItem="B83-qG-EMe" secondAttribute="leading" id="02y-RN-vxI"/>
+                            <constraint firstItem="6SL-6D-wbx" firstAttribute="centerX" secondItem="T0f-yN-hdg" secondAttribute="centerX" id="6VA-T0-237"/>
+                            <constraint firstItem="U3d-TP-EI3" firstAttribute="top" secondItem="B83-qG-EMe" secondAttribute="top" id="8l2-LK-xcL"/>
+                            <constraint firstItem="B83-qG-EMe" firstAttribute="trailing" secondItem="TeY-Ci-gYX" secondAttribute="trailing" constant="20" id="Kep-p6-mL9"/>
+                            <constraint firstItem="B83-qG-EMe" firstAttribute="trailing" secondItem="U3d-TP-EI3" secondAttribute="trailing" id="Zvg-ZZ-l9r"/>
+                            <constraint firstItem="TeY-Ci-gYX" firstAttribute="top" secondItem="B83-qG-EMe" secondAttribute="top" constant="20" id="muL-UQ-LpC"/>
+                            <constraint firstItem="B83-qG-EMe" firstAttribute="bottom" secondItem="U3d-TP-EI3" secondAttribute="bottom" id="sP9-WN-HeF"/>
+                            <constraint firstItem="B83-qG-EMe" firstAttribute="bottom" secondItem="6SL-6D-wbx" secondAttribute="bottom" constant="25" id="vx2-hc-nCi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="B83-qG-EMe"/>
+                    </view>
+                    <connections>
+                        <outlet property="augmentedRealityView" destination="U3d-TP-EI3" id="8ht-zd-cZc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="khX-PM-3Nu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5340.579710144928" y="670.3125"/>
+        </scene>
         <!--Detail View Controller-->
         <scene sceneID="YWk-3Y-M4v">
             <objects>
@@ -889,7 +947,9 @@ Moeder en Vader Kanon</string>
         </scene>
     </scenes>
     <resources>
+        <image name="arrowshape.turn.up.left" catalog="system" width="64" height="52"/>
         <image name="bolt.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="camera.circle" catalog="system" width="64" height="60"/>
         <image name="ic_account_circle3x.png" width="180" height="180"/>
         <image name="location.fill" catalog="system" width="64" height="56"/>
         <image name="location_icon" width="302" height="380"/>

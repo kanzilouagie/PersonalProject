@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-struct EventData {
+struct UserData {
     var name: String
-    var location: String
+    var cover: String
     
 }

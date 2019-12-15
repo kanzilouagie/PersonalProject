@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import ARKit
 
 class Utilities {
     
@@ -52,3 +53,4 @@ class Utilities {
     }
     
 }
+

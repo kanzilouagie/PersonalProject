@@ -25,6 +25,7 @@
 		E541B1D823A1189E0096B2D9 /* PickLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E541B1D723A1189E0096B2D9 /* PickLocationTableViewCell.swift */; };
 		E541B1DA23A13B8B0096B2D9 /* CheckInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E541B1D923A13B8B0096B2D9 /* CheckInViewController.swift */; };
 		E541B1DC23A13BBA0096B2D9 /* CheckInTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E541B1DB23A13BBA0096B2D9 /* CheckInTableViewCell.swift */; };
+		E541B1DE23A15C0B0096B2D9 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E541B1DD23A15C0B0096B2D9 /* UserData.swift */; };
 		E546D3F423987C9900E06E44 /* EventData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546D3F323987C9900E06E44 /* EventData.swift */; };
 		E546D3F62398802500E06E44 /* RequestedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546D3F52398802500E06E44 /* RequestedData.swift */; };
 		E546D3F8239C1E2600E06E44 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546D3F7239C1E2600E06E44 /* DetailViewController.swift */; };
@@ -36,6 +37,11 @@
 		E546D405239CA90600E06E44 /* FriendsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546D404239CA90600E06E44 /* FriendsListTableViewCell.swift */; };
 		E546D407239CA92300E06E44 /* FriendsRequestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546D406239CA92300E06E44 /* FriendsRequestsTableViewCell.swift */; };
 		E553428023961E9E009447F1 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553427F23961E9E009447F1 /* EventTableViewCell.swift */; };
+		E5751A3423A533E100942C71 /* ARCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5751A3323A533E100942C71 /* ARCameraViewController.swift */; };
+		E5751A3623A534A400942C71 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = E5751A3523A534A400942C71 /* Experience.rcproject */; };
+		E5751A5B23A5C20D00942C71 /* FocusSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5751A5A23A5C20D00942C71 /* FocusSquare.swift */; };
+		E5751A5D23A5D4AE00942C71 /* ObjectAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5751A5C23A5D4AE00942C71 /* ObjectAddition.swift */; };
+		E5751A5F23A5D6ED00942C71 /* ARImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5751A5E23A5D6ED00942C71 /* ARImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +67,7 @@
 		E541B1D723A1189E0096B2D9 /* PickLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickLocationTableViewCell.swift; sourceTree = "<group>"; };
 		E541B1D923A13B8B0096B2D9 /* CheckInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInViewController.swift; sourceTree = "<group>"; };
 		E541B1DB23A13BBA0096B2D9 /* CheckInTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInTableViewCell.swift; sourceTree = "<group>"; };
+		E541B1DD23A15C0B0096B2D9 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		E546D3F323987C9900E06E44 /* EventData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventData.swift; sourceTree = "<group>"; };
 		E546D3F52398802500E06E44 /* RequestedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedData.swift; sourceTree = "<group>"; };
 		E546D3F7239C1E2600E06E44 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +79,11 @@
 		E546D404239CA90600E06E44 /* FriendsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListTableViewCell.swift; sourceTree = "<group>"; };
 		E546D406239CA92300E06E44 /* FriendsRequestsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsRequestsTableViewCell.swift; sourceTree = "<group>"; };
 		E553427F23961E9E009447F1 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		E5751A3323A533E100942C71 /* ARCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCameraViewController.swift; sourceTree = "<group>"; };
+		E5751A3523A534A400942C71 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
+		E5751A5A23A5C20D00942C71 /* FocusSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSquare.swift; sourceTree = "<group>"; };
+		E5751A5C23A5D4AE00942C71 /* ObjectAddition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectAddition.swift; sourceTree = "<group>"; };
+		E5751A5E23A5D6ED00942C71 /* ARImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARImage.swift; sourceTree = "<group>"; };
 		E5EE8EEE239595D000B55DA5 /* Bash.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bash.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,7 +119,6 @@
 		E53D81B7239554DF00D83DB5 = {
 			isa = PBXGroup;
 			children = (
-				E546D3FD239C752000E06E44 /* Model */,
 				E53D81C2239554DF00D83DB5 /* Bash */,
 				E53D81C1239554DF00D83DB5 /* Products */,
 				D34BBD733914333968AB0927 /* Pods */,
@@ -129,14 +140,16 @@
 				E5EE8EEE239595D000B55DA5 /* Bash.entitlements */,
 				E53D81C3239554DF00D83DB5 /* AppDelegate.swift */,
 				E53D81C5239554DF00D83DB5 /* SceneDelegate.swift */,
+				E546D3FD239C752000E06E44 /* Model */,
 				E53D81E5239562EC00D83DB5 /* Helpers */,
 				E53D81E22395586600D83DB5 /* View */,
-				E53D81C9239554DF00D83DB5 /* Main.storyboard */,
 				E53D81DA239555B800D83DB5 /* GoogleService-Info.plist */,
+				E53D81C9239554DF00D83DB5 /* Main.storyboard */,
 				E53D81CF239554E000D83DB5 /* Assets.xcassets */,
 				E53D81D1239554E000D83DB5 /* LaunchScreen.storyboard */,
 				E53D81D4239554E000D83DB5 /* Info.plist */,
 				E53D81CC239554DF00D83DB5 /* Bash.xcdatamodeld */,
+				E5751A3523A534A400942C71 /* Experience.rcproject */,
 			);
 			path = Bash;
 			sourceTree = "<group>";
@@ -160,6 +173,7 @@
 				E541B1D723A1189E0096B2D9 /* PickLocationTableViewCell.swift */,
 				E541B1D923A13B8B0096B2D9 /* CheckInViewController.swift */,
 				E541B1DB23A13BBA0096B2D9 /* CheckInTableViewCell.swift */,
+				E5751A3323A533E100942C71 /* ARCameraViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -171,6 +185,10 @@
 				E53D81E62395706200D83DB5 /* Constants.swift */,
 				E546D3F323987C9900E06E44 /* EventData.swift */,
 				E546D3F52398802500E06E44 /* RequestedData.swift */,
+				E541B1DD23A15C0B0096B2D9 /* UserData.swift */,
+				E5751A5A23A5C20D00942C71 /* FocusSquare.swift */,
+				E5751A5C23A5D4AE00942C71 /* ObjectAddition.swift */,
+				E5751A5E23A5D6ED00942C71 /* ARImage.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -373,13 +391,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5751A5D23A5D4AE00942C71 /* ObjectAddition.swift in Sources */,
 				E546D3F8239C1E2600E06E44 /* DetailViewController.swift in Sources */,
+				E5751A5B23A5C20D00942C71 /* FocusSquare.swift in Sources */,
 				E546D3F62398802500E06E44 /* RequestedData.swift in Sources */,
 				E546D3FF239C753400E06E44 /* SettingsSections.swift in Sources */,
+				E541B1DE23A15C0B0096B2D9 /* UserData.swift in Sources */,
 				E553428023961E9E009447F1 /* EventTableViewCell.swift in Sources */,
 				E541B1DA23A13B8B0096B2D9 /* CheckInViewController.swift in Sources */,
 				E546D403239CA80A00E06E44 /* FriendsRequestsViewController.swift in Sources */,
 				E53D81C8239554DF00D83DB5 /* ViewController.swift in Sources */,
+				E5751A5F23A5D6ED00942C71 /* ARImage.swift in Sources */,
 				E546D3F423987C9900E06E44 /* EventData.swift in Sources */,
 				E546D407239CA92300E06E44 /* FriendsRequestsTableViewCell.swift in Sources */,
 				E546D3FC239C6F2200E06E44 /* SettingsTableViewCell.swift in Sources */,
@@ -390,10 +412,12 @@
 				E53D81CE239554DF00D83DB5 /* Bash.xcdatamodeld in Sources */,
 				E53D81E12395584D00D83DB5 /* HomeViewController.swift in Sources */,
 				E53D81E4239562DD00D83DB5 /* Utilities.swift in Sources */,
+				E5751A3423A533E100942C71 /* ARCameraViewController.swift in Sources */,
 				E546D405239CA90600E06E44 /* FriendsListTableViewCell.swift in Sources */,
 				E53D81E72395706200D83DB5 /* Constants.swift in Sources */,
 				E546D3FA239C540F00E06E44 /* SettingsViewController.swift in Sources */,
 				E541B1D823A1189E0096B2D9 /* PickLocationTableViewCell.swift in Sources */,
+				E5751A3623A534A400942C71 /* Experience.rcproject in Sources */,
 				E541B1DC23A13BBA0096B2D9 /* CheckInTableViewCell.swift in Sources */,
 				E519A588239ECF230060D3B7 /* AddFriendsViewController.swift in Sources */,
 				E519A58A239ECF4F0060D3B7 /* AddFriendsTableViewCell.swift in Sources */,

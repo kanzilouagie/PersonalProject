@@ -69,7 +69,7 @@ extension PickLocationViewController: UITableViewDelegate {
         HomeViewController.selectedCafe = self.cafes[indexPath.row]
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let DvC = storyBoard.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController) as! HomeViewController
-        self.navigationController?.view.layer.add(CATransition().segueFromBottom(), forKey: nil)
+        self.navigationController?.view.layer.add(CATransition().segueFromLeft(), forKey: nil)
         self.navigationController?.pushViewController(DvC, animated: false)
     }
 }
