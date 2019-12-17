@@ -365,6 +365,7 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (6.12.0):
     - PromiseKit/CorePromise
+  - ReachabilitySwift (5.0.0)
   - SDWebImage (5.3.2):
     - SDWebImage/Core (= 5.3.2)
   - SDWebImage/Core (5.3.2)
@@ -380,6 +381,7 @@ DEPENDENCIES:
   - FirebaseUI
   - PromiseKit
   - PromiseKit/Alamofire
+  - ReachabilitySwift
   - SwiftyJSON
 
 SPEC REPOS:
@@ -415,6 +417,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromiseKit
+    - ReachabilitySwift
     - SDWebImage
     - SwiftyJSON
 
@@ -450,9 +453,10 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromiseKit: c06835ba442ce5454ce3cdde470232804a6e4ff8
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SDWebImage: 6ac2eb96571bff96ecde31a987172c5934a0eb7d
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: f442078c4898201c64382377e9b916ac35072f58
+PODFILE CHECKSUM: 50b327d8de553c6c58e58d524c1ef04cbfa3ecb8
 
 COCOAPODS: 1.6.1

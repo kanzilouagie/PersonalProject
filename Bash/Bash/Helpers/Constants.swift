@@ -21,5 +21,7 @@ struct Constants {
         static let pickLocationViewController = "PickerVC"
         static let checkInViewController = "CheckInVC"
         static let arViewController = "ARVC"
+        static let pictureViewController = "PictureVC"
+        static let connectionFailedViewController = "ConnectionFailedVC"
     }
 }

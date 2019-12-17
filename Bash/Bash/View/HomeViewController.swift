@@ -14,13 +14,16 @@ import PromiseKit
 import Firebase
 import FirebaseDatabase
 import FBSDKLoginKit
+import Reachability
 
 class HomeViewController: UIViewController, UITableViewDataSource  {
+    
     
     @IBOutlet weak var eventTableView: UITableView!
     @IBOutlet weak var ProfileButton: UIBarButtonItem!
     @IBOutlet weak var locationPickerButton: UIButton!
     
+    let reachability = try! Reachability()
     static var selectedCafe: String = "Kortrijk"
     var eventsData: [RequestedData] = []
     var arrayData: [JSON] = []
@@ -29,21 +32,42 @@ class HomeViewController: UIViewController, UITableViewDataSource  {
     var LoginPopupCount = 0
     var isPresented: Bool = false
     private var authListener: AuthStateDidChangeListenerHandle?
-    
     let titles = ["hawai party", "dub party xl", "techno rave"]
     let interested = [10, 321, 378]
     let images = [UIImage(named: "omslag"), UIImage(named: "omslag2"), UIImage(named: "omslag3")]
+    var dates: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 //        getUserInfo()
         locationPickerButton.setTitle(HomeViewController.selectedCafe, for: .normal)
         fetchCafesFromDatabase()
+        reachability.whenReachable = { reachability in
+            if reachability.connection == .wifi {
+                print("Reachable via WiFi")
+            } else {
+                print("Reachable via Cellular")
+            }
+        }
+        reachability.whenUnreachable = { _ in
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+              let DvC = storyBoard.instantiateViewController(withIdentifier: Constants.Storyboard.connectionFailedViewController) as! ConnectionFailedViewController
+              DvC.isModalInPresentation = true
+          self.navigationController?.pushViewController(DvC, animated: false)
+        }
+
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+        }
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
-            
+            self.navigationController?.setNavigationBarHidden(false, animated: animated)
             //logout af en aan zetten voor debugging purposes
 //            logOut()
             
@@ -61,7 +85,35 @@ class HomeViewController: UIViewController, UITableViewDataSource  {
                     self.LoginPopupCount += 1
                 }
             }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+        do{
+          try reachability.startNotifier()
+        }catch{
+          print("could not start reachability notifier")
         }
+        
+
+        }
+    
+    @objc func reachabilityChanged(note: Notification) {
+
+      let reachability = note.object as! Reachability
+
+      switch reachability.connection {
+      case .wifi:
+          print("Reachable via WiFi")
+      case .cellular:
+          print("Reachable via Cellular")
+      case .unavailable:
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let DvC = storyBoard.instantiateViewController(withIdentifier: Constants.Storyboard.connectionFailedViewController) as! ConnectionFailedViewController
+            DvC.isModalInPresentation = true
+          self.navigationController?.pushViewController(DvC, animated: false)
+      case .none:
+        print("none")
+        }
+    }
 
         // Remove the listener once it's no longer needed
         deinit {
@@ -164,17 +216,51 @@ class HomeViewController: UIViewController, UITableViewDataSource  {
 //        }
 //    }
     
-    func checkDate(date:String) -> Bool {
+    func checkDate2(date:String) -> Bool {
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         dateformatter.locale = Locale(identifier: "en_US_POSIX")
         let dateDate = dateformatter.date(from: date)
         
-        if(dateDate! >= Date()) {
+        let now = Calendar.current.dateComponents(in: .current, from: Date())
+        let tomorrow = DateComponents(year: now.year, month: now.month, day: now.day!+1)
+        let dateTomorrow = Calendar.current.date(from: tomorrow)!
+    
+        
+        if(dateDate! > dateTomorrow) {
             return true
         }
-        
+
         return false
+    }
+    
+    func checkDate(date:String) -> Bool {
+        
+        //format date from table
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        guard let todayDate = dateformatter.date(from: date) else { return false }
+        let myCalendar = Calendar(identifier: .gregorian)
+        let weekDayInt = myCalendar.component(.weekday, from: todayDate)
+        dateformatter.locale = Locale(identifier: "nl_BE_POSIX")
+        let dateDate = dateformatter.date(from: date)
+        
+        //format day of table to dayname
+        dateformatter.dateFormat = "LLLL"
+        let dayInWeek = dateformatter.string(from: dateDate!)
+        print(weekDayInt, dayInWeek)
+        
+        //get int of todaysdate
+        let calendar = Calendar.current
+        let date = Date()
+        let todaysDate = calendar.component(.day, from: date)
+        
+        
+        if(weekDayInt >= todaysDate) {
+            return true
+        }
+
+       return false
     }
     
 
@@ -183,14 +269,21 @@ class HomeViewController: UIViewController, UITableViewDataSource  {
         var customObjects = eventsData
         DispatchQueue.main.async {
         customObjects = customObjects.sorted(by: {
-            $0.start_time.compare($1.start_time) == .orderedAscending
+            var startTime1 = $0.start_time
+            var startTime2 = $1.start_time
+            startTime1.removeLast(14)
+            startTime2.removeLast(14)
+            if(startTime1 == startTime2) {
+                return $0.interested_count >= $1.interested_count
+            } else {
+                return startTime1.compare(startTime2) == .orderedAscending
+            }
+           
         })
 
-//        for obj in customObjects {
-//            print("Sorted Date: \(obj.start_time) with title: \(obj.placename)")
-//        }
             self.eventsData = customObjects
             self.eventTableView.reloadData()
+
         }
 
     }
@@ -249,9 +342,12 @@ class HomeViewController: UIViewController, UITableViewDataSource  {
                     let data = json["data"]
                     data.array?.forEach({ (event) in
                         let event = RequestedData(name: event["name"].stringValue, Description: event["description"].stringValue, interested_count: event["interested_count"].intValue, id: event["id"].stringValue, start_time: event["start_time"].stringValue, end_time: event["end_time"].stringValue, placename: event["place"]["name"].stringValue, city: event["place"]["location"]["city"].stringValue, longitude: event["place"]["location"]["longitude"].floatValue, altitude: event["place"]["location"]["altitude"].floatValue, cover: event["cover"]["source"].url!)
-                        if(self.checkDate(date: event.start_time)) {
+                        if(self.eventsData.contains { $0.name == event.name }) {
+                            print("exist")
+                        } else if(self.checkDate2(date: event.start_time)) {
                             self.eventsData.append(event)
                         }
+                        
 
                     })
                 case .failure(let err):
@@ -259,8 +355,10 @@ class HomeViewController: UIViewController, UITableViewDataSource  {
                 }
                 self.sortData()
             }
+
         }
         })
+
     }
     
     
@@ -272,20 +370,35 @@ class HomeViewController: UIViewController, UITableViewDataSource  {
 extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        eventsData.count
+        return eventsData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! EventTableViewCell
         let event = eventsData[indexPath.row]
-        cell.EventTitle.text = event.name
+        let eventName = event.name.prefix(37)
+        cell.EventTitle.text = String(eventName)
         cell.EventInterested.text = String(event.interested_count)
         cell.EventImage.load(url: event.cover)
-        var startTime = event.start_time
-        startTime.removeFirst(11)
-        startTime.removeLast(8)
-        cell.EventTime.text = startTime
-        cell.EventLocation.text = event.placename
+        
+        let startTime = event.start_time
+        
+        //format date from table
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let todayDate = dateformatter.date(from: startTime)
+        let myCalendar = Calendar(identifier: .gregorian)
+        let weekDayInt = myCalendar.component(.day, from: todayDate!)
+        
+        //format day of table to dayname
+        dateformatter.locale = Locale(identifier: "nl_BE_POSIX")
+        let dateDate = dateformatter.date(from: startTime)
+        dateformatter.dateFormat = "LLLL"
+        let dayInWeek = dateformatter.string(from: dateDate!)
+        
+        cell.EventTime.text = "\(weekDayInt) \(dayInWeek)"
+        let eventLocation = event.placename.prefix(24)
+        cell.EventLocation.text = String(eventLocation)
         return cell
     }
     

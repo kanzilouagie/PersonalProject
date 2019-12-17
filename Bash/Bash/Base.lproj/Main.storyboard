@@ -406,14 +406,35 @@
                                     <action selector="reloadView:" destination="r2Q-kf-mG5" eventType="touchUpInside" id="PKi-uW-KcM"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJZ-ew-52O">
+                                <rect key="frame" x="177.5" y="780" width="59" height="57"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="camera.circle.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
+                                </state>
+                                <connections>
+                                    <action selector="takeImage:" destination="r2Q-kf-mG5" eventType="touchUpInside" id="urp-wB-sH2"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zoek een muur en richt je iPhone ernaartoe" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXZ-dl-Iod">
+                                <rect key="frame" x="40" y="69" width="334" height="41"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="U3d-TP-EI3" firstAttribute="leading" secondItem="B83-qG-EMe" secondAttribute="leading" id="02y-RN-vxI"/>
+                            <constraint firstItem="B83-qG-EMe" firstAttribute="trailing" secondItem="gXZ-dl-Iod" secondAttribute="trailing" constant="40" id="2rN-Om-KsP"/>
                             <constraint firstItem="6SL-6D-wbx" firstAttribute="centerX" secondItem="T0f-yN-hdg" secondAttribute="centerX" id="6VA-T0-237"/>
                             <constraint firstItem="U3d-TP-EI3" firstAttribute="top" secondItem="B83-qG-EMe" secondAttribute="top" id="8l2-LK-xcL"/>
+                            <constraint firstItem="uJZ-ew-52O" firstAttribute="centerX" secondItem="T0f-yN-hdg" secondAttribute="centerX" id="GZ7-Oj-HTi"/>
                             <constraint firstItem="B83-qG-EMe" firstAttribute="trailing" secondItem="TeY-Ci-gYX" secondAttribute="trailing" constant="20" id="Kep-p6-mL9"/>
+                            <constraint firstItem="gXZ-dl-Iod" firstAttribute="leading" secondItem="B83-qG-EMe" secondAttribute="leading" constant="40" id="Xsq-bj-1Is"/>
                             <constraint firstItem="B83-qG-EMe" firstAttribute="trailing" secondItem="U3d-TP-EI3" secondAttribute="trailing" id="Zvg-ZZ-l9r"/>
+                            <constraint firstItem="gXZ-dl-Iod" firstAttribute="top" secondItem="B83-qG-EMe" secondAttribute="top" constant="25" id="doj-Oz-Qf3"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="uJZ-ew-52O" secondAttribute="bottom" constant="25" id="gTE-1F-qyj"/>
                             <constraint firstItem="TeY-Ci-gYX" firstAttribute="top" secondItem="B83-qG-EMe" secondAttribute="top" constant="20" id="muL-UQ-LpC"/>
                             <constraint firstItem="B83-qG-EMe" firstAttribute="bottom" secondItem="U3d-TP-EI3" secondAttribute="bottom" id="sP9-WN-HeF"/>
                             <constraint firstItem="B83-qG-EMe" firstAttribute="bottom" secondItem="6SL-6D-wbx" secondAttribute="bottom" constant="25" id="vx2-hc-nCi"/>
@@ -422,11 +443,101 @@
                     </view>
                     <connections>
                         <outlet property="augmentedRealityView" destination="U3d-TP-EI3" id="8ht-zd-cZc"/>
+                        <outlet property="instructionLabel" destination="gXZ-dl-Iod" id="vFu-e2-L1T"/>
+                        <outlet property="setPosterButton" destination="6SL-6D-wbx" id="Gu2-2j-oI5"/>
+                        <outlet property="takeImageButton" destination="uJZ-ew-52O" id="7Wy-ex-Wmw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="khX-PM-3Nu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5340.579710144928" y="670.3125"/>
+        </scene>
+        <!--Picture View Controller-->
+        <scene sceneID="PT1-CF-ppd">
+            <objects>
+                <viewController storyboardIdentifier="PictureVC" id="LGR-0z-ozD" customClass="PictureViewController" customModule="Bash" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eXc-es-E2M">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tca-Eg-oaF">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9W-M0-2Tm">
+                                <rect key="frame" x="339" y="784" width="45" height="48"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="square.and.arrow.down" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveImage:" destination="LGR-0z-ozD" eventType="touchUpInside" id="6fa-cd-cRo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="GMi-LU-to7" firstAttribute="bottom" secondItem="tca-Eg-oaF" secondAttribute="bottom" id="3eP-wl-dPV"/>
+                            <constraint firstItem="GMi-LU-to7" firstAttribute="trailing" secondItem="tca-Eg-oaF" secondAttribute="trailing" id="KjS-nv-m4P"/>
+                            <constraint firstItem="tca-Eg-oaF" firstAttribute="leading" secondItem="GMi-LU-to7" secondAttribute="leading" id="SWn-mm-fYu"/>
+                            <constraint firstItem="tca-Eg-oaF" firstAttribute="top" secondItem="GMi-LU-to7" secondAttribute="top" id="U4j-gl-kzD"/>
+                            <constraint firstItem="GMi-LU-to7" firstAttribute="bottom" secondItem="Y9W-M0-2Tm" secondAttribute="bottom" constant="30" id="gYC-Em-SST"/>
+                            <constraint firstItem="GMi-LU-to7" firstAttribute="trailing" secondItem="Y9W-M0-2Tm" secondAttribute="trailing" constant="30" id="n8P-K4-VyQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GMi-LU-to7"/>
+                    </view>
+                    <connections>
+                        <outlet property="ARPicture" destination="tca-Eg-oaF" id="pP4-2c-1fi"/>
+                        <outlet property="saveImageButton" destination="Y9W-M0-2Tm" id="9dF-pQ-i2V"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q2S-mD-Su6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6095" y="667"/>
+        </scene>
+        <!--Connection Failed View Controller-->
+        <scene sceneID="8d4-LG-xc2">
+            <objects>
+                <viewController storyboardIdentifier="ConnectionFailedVC" id="E1E-2l-NCD" customClass="ConnectionFailedViewController" customModule="Bash" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fak-Kd-ZkL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XgY-fR-QKn">
+                                <rect key="frame" x="100" y="362" width="214.5" height="172.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Mwm-aD-C9B">
+                                        <rect key="frame" x="57" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="SUx-oB-6PU"/>
+                                            <constraint firstAttribute="height" constant="100" id="SZd-80-7uV"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oops..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyc-A1-o7g">
+                                        <rect key="frame" x="53.5" y="108" width="107.5" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check uw internetconnectie" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ds0-3P-oxr">
+                                        <rect key="frame" x="0.0" y="152" width="214.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="XgY-fR-QKn" firstAttribute="centerY" secondItem="fak-Kd-ZkL" secondAttribute="centerY" id="Hul-2q-RYQ"/>
+                            <constraint firstItem="XgY-fR-QKn" firstAttribute="centerX" secondItem="fak-Kd-ZkL" secondAttribute="centerX" id="N3a-ZW-bQt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kvn-Vc-a9d"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lms-BX-2Th" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6928" y="225"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="YWk-3Y-M4v">
@@ -950,6 +1061,7 @@ Moeder en Vader Kanon</string>
         <image name="arrowshape.turn.up.left" catalog="system" width="64" height="52"/>
         <image name="bolt.circle.fill" catalog="system" width="64" height="60"/>
         <image name="camera.circle" catalog="system" width="64" height="60"/>
+        <image name="camera.circle.fill" catalog="system" width="64" height="60"/>
         <image name="ic_account_circle3x.png" width="180" height="180"/>
         <image name="location.fill" catalog="system" width="64" height="56"/>
         <image name="location_icon" width="302" height="380"/>
@@ -957,6 +1069,7 @@ Moeder en Vader Kanon</string>
         <image name="music.house.fill" catalog="system" width="64" height="52"/>
         <image name="omslag" width="960" height="501"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
+        <image name="square.and.arrow.down" catalog="system" width="60" height="64"/>
         <image name="time" width="302" height="302"/>
     </resources>
 </document>

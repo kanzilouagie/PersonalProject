@@ -16,5 +16,6 @@ pod 'SwiftyJSON'
 pod 'Alamofire'
 pod 'PromiseKit'
 pod 'PromiseKit/Alamofire'
+pod 'ReachabilitySwift'
 
 end

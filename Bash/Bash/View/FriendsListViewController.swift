@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseUI
+import Reachability
 
 class FriendsListViewController: UIViewController, UITableViewDataSource {
     
@@ -19,7 +20,7 @@ class FriendsListViewController: UIViewController, UITableViewDataSource {
         var authUI: FUIAuth!
         var arrayFriends: [String] = []
         var ArrayFriendsList = [[String: Any]]()
-
+        let reachability = try! Reachability()
     override func viewDidLoad() {
         super.viewDidLoad()
         friendsTableView.delegate = self
@@ -46,6 +47,55 @@ class FriendsListViewController: UIViewController, UITableViewDataSource {
         
         // Do any additional setup after loading the view.
     }
+        
+        reachability.whenReachable = { reachability in
+            if reachability.connection == .wifi {
+                print("Reachable via WiFi")
+            } else {
+                print("Reachable via Cellular")
+            }
+        }
+        reachability.whenUnreachable = { _ in
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+              let DvC = storyBoard.instantiateViewController(withIdentifier: Constants.Storyboard.connectionFailedViewController) as! ConnectionFailedViewController
+              DvC.isModalInPresentation = true
+          self.navigationController?.pushViewController(DvC, animated: false)
+        }
+
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+        do{
+          try reachability.startNotifier()
+        }catch{
+          print("could not start reachability notifier")
+        }
+    }
+    
+    @objc func reachabilityChanged(note: Notification) {
+
+      let reachability = note.object as! Reachability
+
+      switch reachability.connection {
+      case .wifi:
+          print("Reachable via WiFi")
+      case .cellular:
+          print("Reachable via Cellular")
+      case .unavailable:
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let DvC = storyBoard.instantiateViewController(withIdentifier: Constants.Storyboard.connectionFailedViewController) as! ConnectionFailedViewController
+            DvC.isModalInPresentation = true
+          self.navigationController?.pushViewController(DvC, animated: false)
+      case .none:
+        print("none")
+        }
     }
     
     func getFriends() {

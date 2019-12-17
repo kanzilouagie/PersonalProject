@@ -9,10 +9,15 @@
 import UIKit
 import RealityKit
 import ARKit
+import Reachability
 
 class ARCameraViewController: UIViewController {
     
     @IBOutlet var augmentedRealityView: ARSCNView!
+    @IBOutlet weak var setPosterButton: UIButton!
+    @IBOutlet weak var takeImageButton: UIButton!
+    @IBOutlet weak var instructionLabel: UILabel!
+    
 //    let augmentedRealitySession = ARSession()
     var nodeWeCanChange: SCNNode?
     let imageGallery = [UIImage(named: "omslag"), UIImage(named: "omslag2")]
@@ -23,16 +28,64 @@ class ARCameraViewController: UIViewController {
     var arImage: ARImage?
     var imageForAR: URL?
 //    var teller = 0
-    
+    let reachability = try! Reachability()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpSceneView()
         screenCenter = view.center
+        setPosterButton.isHidden = false
+        takeImageButton.isHidden = true
+        instructionLabel.text = "Zoek een muur en richt je iPhone ernaartoe"
+        
+        reachability.whenReachable = { reachability in
+            if reachability.connection == .wifi {
+                print("Reachable via WiFi")
+            } else {
+                print("Reachable via Cellular")
+            }
+        }
+        reachability.whenUnreachable = { _ in
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+              let DvC = storyBoard.instantiateViewController(withIdentifier: Constants.Storyboard.connectionFailedViewController) as! ConnectionFailedViewController
+              DvC.isModalInPresentation = true
+          self.navigationController?.pushViewController(DvC, animated: false)
+        }
+
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+        do{
+          try reachability.startNotifier()
+        }catch{
+          print("could not start reachability notifier")
+        }
+    }
+    
+    @objc func reachabilityChanged(note: Notification) {
+
+      let reachability = note.object as! Reachability
+
+      switch reachability.connection {
+      case .wifi:
+          print("Reachable via WiFi")
+      case .cellular:
+          print("Reachable via Cellular")
+      case .unavailable:
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let DvC = storyBoard.instantiateViewController(withIdentifier: Constants.Storyboard.connectionFailedViewController) as! ConnectionFailedViewController
+            DvC.isModalInPresentation = true
+          self.navigationController?.pushViewController(DvC, animated: false)
+      case .none:
+        print("none")
+        }
     }
     
     func setUpSceneView() {
@@ -69,6 +122,16 @@ class ARCameraViewController: UIViewController {
         self.navigationController?.pushViewController(DvC, animated: true)
     }
     
+    @IBAction func takeImage(_ sender: UIButton) {
+        let image = augmentedRealityView.snapshot()
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let DvC = storyBoard.instantiateViewController(withIdentifier: Constants.Storyboard.pictureViewController) as! PictureViewController
+        DvC.arPicture = image
+        self.navigationController?.pushViewController(DvC, animated: false)
+        
+    }
+    
+    
     
     
     
@@ -88,6 +151,9 @@ class ARCameraViewController: UIViewController {
         augmentedRealityView.debugOptions = []
 //        self.augmentedRealityView.scene.rootNode.addChildNode(imageToApply)
         planeIsSet = true
+        setPosterButton.isHidden = true
+        takeImageButton.isHidden = false
+        instructionLabel.text = "Neem een foto van de poster"
     }
     
     
@@ -104,20 +170,6 @@ extension ARCameraViewController: ARSCNViewDelegate, ARSessionDelegate {
         let focusSquareLocal = FocusSquare()
         self.augmentedRealityView.scene.rootNode.addChildNode(focusSquareLocal)
         self.focusSquare = focusSquareLocal
-    }
-    
-    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-//        print(teller)
-//        if(teller >= 100) {
-//            node.removeFromParentNode()
-//            self.augmentedRealityView.scene.rootNode.enumerateChildNodes { (node, stop) in
-//                node.removeFromParentNode()
-//            }
-//            let focusSquareLocal = FocusSquare()
-//            self.augmentedRealityView.scene.rootNode.addChildNode(focusSquareLocal)
-//            self.focusSquare = focusSquareLocal
-//            teller = 0
-//        }
     }
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {

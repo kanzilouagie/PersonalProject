@@ -21,7 +21,7 @@ class ARImage: SCNNode {
     
     func tapped() {
         let image = self.arImage!
-        let plane = SCNPlane(width: 0.3, height: 0.2)
+        let plane = SCNPlane(width: 0.5, height: 0.3)
         let imageUrl = URL(string: image)!
         let imageData = try! Data(contentsOf: imageUrl)
         plane.firstMaterial?.diffuse.contents = UIImage(data: imageData)

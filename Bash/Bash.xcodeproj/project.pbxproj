@@ -42,6 +42,8 @@
 		E5751A5B23A5C20D00942C71 /* FocusSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5751A5A23A5C20D00942C71 /* FocusSquare.swift */; };
 		E5751A5D23A5D4AE00942C71 /* ObjectAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5751A5C23A5D4AE00942C71 /* ObjectAddition.swift */; };
 		E5751A5F23A5D6ED00942C71 /* ARImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5751A5E23A5D6ED00942C71 /* ARImage.swift */; };
+		E5751A6123A7C69C00942C71 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5751A6023A7C69C00942C71 /* PictureViewController.swift */; };
+		E5751A6323A7E17000942C71 /* ConnectionFailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5751A6223A7E17000942C71 /* ConnectionFailedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +86,8 @@
 		E5751A5A23A5C20D00942C71 /* FocusSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSquare.swift; sourceTree = "<group>"; };
 		E5751A5C23A5D4AE00942C71 /* ObjectAddition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectAddition.swift; sourceTree = "<group>"; };
 		E5751A5E23A5D6ED00942C71 /* ARImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARImage.swift; sourceTree = "<group>"; };
+		E5751A6023A7C69C00942C71 /* PictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
+		E5751A6223A7E17000942C71 /* ConnectionFailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionFailedViewController.swift; sourceTree = "<group>"; };
 		E5EE8EEE239595D000B55DA5 /* Bash.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bash.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,6 +178,8 @@
 				E541B1D923A13B8B0096B2D9 /* CheckInViewController.swift */,
 				E541B1DB23A13BBA0096B2D9 /* CheckInTableViewCell.swift */,
 				E5751A3323A533E100942C71 /* ARCameraViewController.swift */,
+				E5751A6023A7C69C00942C71 /* PictureViewController.swift */,
+				E5751A6223A7E17000942C71 /* ConnectionFailedViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -349,6 +355,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/abseil/absl.framework",
@@ -371,6 +378,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/absl.framework",
@@ -394,9 +402,11 @@
 				E5751A5D23A5D4AE00942C71 /* ObjectAddition.swift in Sources */,
 				E546D3F8239C1E2600E06E44 /* DetailViewController.swift in Sources */,
 				E5751A5B23A5C20D00942C71 /* FocusSquare.swift in Sources */,
+				E5751A6323A7E17000942C71 /* ConnectionFailedViewController.swift in Sources */,
 				E546D3F62398802500E06E44 /* RequestedData.swift in Sources */,
 				E546D3FF239C753400E06E44 /* SettingsSections.swift in Sources */,
 				E541B1DE23A15C0B0096B2D9 /* UserData.swift in Sources */,
+				E5751A6123A7C69C00942C71 /* PictureViewController.swift in Sources */,
 				E553428023961E9E009447F1 /* EventTableViewCell.swift in Sources */,
 				E541B1DA23A13B8B0096B2D9 /* CheckInViewController.swift in Sources */,
 				E546D403239CA80A00E06E44 /* FriendsRequestsViewController.swift in Sources */,
